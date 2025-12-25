@@ -1,23 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unbundled Finch | Advocacy Portal</title>
-    <style>
-        body { font-family: 'Georgia', serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 60px 20px; background-color: #f4f4f4; text-align: center; }
-        .container { background: white; padding: 50px; border-top: 8px solid #1a2a6c; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 4px; }
-        .logo { font-size: 2.5em; font-weight: bold; letter-spacing: 2px; color: #1a2a6c; text-transform: uppercase; margin-bottom: 10px; }
-        .btn { display: inline-block; background: #1a2a6c; color: white; padding: 15px 30px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unbundled Finch | Advocacy Intake</title>
+  <meta name="description" content="Unbundled Finch — Advocacy intake for correspondence and supporting materials." />
+
+  <style>
+    :root{
+      --emerald: #0F3D2E;      /* deep, serious */
+      --emerald-2: #134A37;    /* hover */
+      --gold: #C8A24A;         /* muted gold */
+      --ink: #1F2A2E;
+      --muted: #5B6770;
+      --paper: #F6F4EF;        /* warm, “archival” */
+      --card: #FFFFFF;
+      --line: rgba(15,61,46,.18);
+      --shadow: 0 14px 32px rgba(0,0,0,.10);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(200,162,74,.14), transparent 55%),
+        radial-gradient(900px 600px at 100% 0%, rgba(15,61,46,.10), transparent 55%),
+        var(--paper);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 34px 18px;
+    }
+
+    .container{
+      width: 100%;
+      max-width: 860px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 10px solid var(--emerald);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 38px 26px;
+      text-align: center;
+    }
+
+    .brand{
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .logo-mark{
+      width: 108px;
+      height: 108px;
+      display: inline-block;
+    }
+
+    .wordmark{
+      margin: 0;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+      color: var(--emerald);
+      line-height: 1.05;
+    }
+
+    .tagline{
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .rule{
+      margin: 22px auto 18px;
+      width: min(520px, 92%);
+      border: none;
+      border-top: 1px solid rgba(31,42,46,.18);
+    }
+
+    .copy{
+      margin: 0 auto;
+      max-width: 58ch;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: #223136;
+    }
+
+    .btn{
+      display: inline-block;
+      margin-top: 22px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      background: var(--emerald);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 18px rgba(15,61,46,.18);
+      transition: transform .08s ease, background .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{
+      background: var(--emerald-2);
+      box-shadow: 0 12px 22px rgba(15,61,46,.22);
+      transform: translateY(-1px);
+    }
+    .btn:active{
+      transform: translateY(0px);
+    }
+
+    .subnote{
+      margin-top: 18px;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .disclaimer{
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(31,42,46,.14);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: rgba(31,42,46,.72);
+    }
+
+    .accent{
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Mobile breathing room */
+    @media (max-width: 420px){
+      .container{ padding: 32px 18px; }
+      .logo-mark{ width: 92px; height: 92px; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="logo">UNBUNDLED FINCH</div>
-        <p>INTEGRITY • ADVOCACY • JUSTICE</p>
-        <hr>
-        <p>Direct all formal correspondence and evidence inquiries to our advocacy portal:</p>
-        <a href="mailto:advocacy@unbundledfinch.com" class="btn">CONTACT ADVOCACY PORTAL</a>
-    </div>
+  <main class="container">
+    <header class="brand">
+      <!-- Minimal “finch + balance” mark (silhouette-ish), emerald primary with gold accent -->
+      <svg class="logo-mark" viewBox="0 0 128 128" aria-label="Unbundled Finch logo" role="img">
+        <!-- Outer ring -->
+        <circle cx="64" cy="64" r="58" fill="none" stroke="rgba(15,61,46,.22)" stroke-width="2" />
+        <circle cx="64" cy="64" r="52" fill="none" stroke="rgba(200,162,74,.28)" stroke-width="2" />
+
+        <!-- Scale post -->
+        <path d="M64 24
+                 C66 24, 68 26, 68 28
+                 L68 78
+                 C68 80, 66 82, 64 82
+                 C62 82, 60 80, 60 78
+                 L60 28
+                 C60 26, 62 24, 64 24Z"
+              fill="#0F3D2E"/>
+
+        <!-- Beam -->
+        <path d="M24 40
+                 C40 38, 52 38, 64 38
+                 C76 38, 88 38, 104 40
+                 L104 44
+                 C88 42, 76 42, 64 42
+                 C52 42, 40 42, 24 44Z"
+              fill="#0F3D2E"/>
+
+        <!-- Hangers -->
+        <path d="M32 44 L32 66" stroke="#0F3D2E" stroke-width="3" stroke-linecap="round"/>
+        <path d="M96 44 L96 66" stroke="#0F3D2E" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- Left pan -->
+        <path d="M18 66
+                 C22 78, 42 78, 46 66
+                 Z"
+              fill="none" stroke="#0F3D2E" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M20 66
+                 C24 74, 40 74, 44 66
+                 Z"
+              fill="rgba(15,61,46,.08)"/>
+
+        <!-- Right pan -->
+        <path d="M82 66
+                 C86 78, 106 78, 110 66
+                 Z"
+              fill="none" stroke="#0F3D2E" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M84 66
+                 C88 74, 104 74, 108 66
+                 Z"
+              fill="rgba(15,61,46,.08)"/>
+
+        <!-- Finch silhouette sitting on left pan (abstract, no cute details) -->
+        <path d="M30 63
+                 C30 58, 34 55, 39 55
+                 C43 55, 47 57, 49 60
+                 C52 60, 55 61, 55 64
+                 C55 67, 52 69, 48 69
+                 L41 69
+                 C38 69, 36 71, 33 72
+                 C31 72, 30 70, 30 68
+                 Z"
+              fill="#0F3D2E"/>
+
+        <!-- Finch beak notch -->
+        <path d="M55 63 L60 61 L56 66 Z" fill="#0F3D2E"/>
+
+        <!-- Gold “moral lever” accent: tiny weight mark under beam center -->
+        <circle cx="64" cy="46" r="3.4" fill="#C8A24A"/>
+        <circle cx="64" cy="46" r="6.8" fill="none" stroke="rgba(200,162,74,.55)" stroke-width="2"/>
+
+        <!-- Base -->
+        <path d="M48 84
+                 C52 78, 76 78, 80 84
+                 L86 96
+                 C74 104, 54 104, 42 96
+                 Z"
+              fill="#0F3D2E"/>
+        <path d="M46 96
+                 C58 102, 70 102, 82 96"
+              fill="none" stroke="rgba(200,162,74,.55)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
+      <p class="tagline">Integrity <span class="accent">•</span> Advocacy <span class="accent">•</span> Justice</p>
+    </header>
+
+    <hr class="rule" />
+
+    <p class="copy">
+      Direct all formal correspondence and <strong>supporting materials</strong> to our
+      <strong>advocacy intake</strong> portal:
+    </p>
+
+    <a class="btn" href="mailto:advocacy@unbundledfinch.com">Contact Advocacy Intake</a>
+
+    <p class="subnote">
+      For general inquiries, include a brief summary in the email subject line.
+    </p>
+
+    <p class="disclaimer">
+      <strong>Notice:</strong> Unbundled Finch is an advocacy and information-intake platform and
+      <strong>does not provide legal advice</strong>, represent clients, or act as a custodian of records.
+    </p>
+  </main>
 </body>
-</html>
+            </html>
