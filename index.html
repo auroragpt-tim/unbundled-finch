@@ -49,19 +49,18 @@
     }
 
     .brand{
-      padding-bottom: 6px;
-    }
       display: grid;
       justify-items: center;
       gap: 14px;
       margin-bottom: 18px;
+      padding-bottom: 6px;
     }
 
     .logo-mark{
-  width: 140px;
-  max-width: 42vw;
-  height: auto;
-  display: block;
+      width: 140px;
+      max-width: 42vw;
+      height: auto;
+      display: block;
     }
 
     .wordmark{
@@ -143,49 +142,33 @@
     /* Mobile breathing room */
     @media (max-width: 420px){
       .container{ padding: 32px 18px; }
-      .logo-mark{ width: 92px; height: 92px; }
+      .logo-mark{ width: 92px; }
     }
 
+    /* Larger screens */
     @media (min-width: 768px){
-  .logo-mark{
-    width: 160px;
-  }
-}
+      .logo-mark{ width: 160px; }
+    }
   </style>
 </head>
 
 <body>
   <main class="container">
     <header class="brand">
-      <!-- Minimal “finch + balance” mark (silhouette-ish), emerald primary with gold accent -->
-      span class="accent">•</span> Advocacy <span class="accent">•</span> Justice</p>
-  <header class="brand">
+      <img
+        src="/assets/logo.png"
+        srcset="/assets/logo@2x.png 2x"
+        alt="Unbundled Finch — Advocacy and Justice"
+        class="logo-mark"
+      />
 
-  <img
-    src="/assets/logo.png"
-    srcset="/assets/logo@2x.png 2x"
-    alt="Unbundled Finch — Advocacy and Justice"
-    class="logo-mark"
-  />
+      <div style="height:1px;width:120px;background:rgba(15,61,46,.2);margin:10px auto 0;"></div>
 
-  <div style="height:1px;width:120px;background:rgba(15,61,46,.2);margin:10px auto 0;"></div>
+      <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
 
-  <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
-
-  <header class="brand">
-
-  <img
-    src="/assets/logo.png"
-    srcset="/assets/logo@2x.png 2x"
-    alt="Unbundled Finch — Advocacy and Justice"
-    class="logo-mark"
-  />
-
-  <div style="height:1px;width:120px;background:rgba(15,61,46,.2);margin:10px auto 0;"></div>
-
-  <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
-
-</header>
+      <p class="tagline">
+        <span class="accent">•</span> Advocacy <span class="accent">•</span> Justice
+      </p>
     </header>
 
     <hr class="rule" />
@@ -207,4 +190,4 @@
     </p>
   </main>
 </body>
-            </html>
+</html>
