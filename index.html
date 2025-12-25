@@ -49,6 +49,8 @@
     }
 
     .brand{
+      padding-bottom: 6px;
+    }
       display: grid;
       justify-items: center;
       gap: 14px;
@@ -56,9 +58,10 @@
     }
 
     .logo-mark{
-      width: 108px;
-      height: 108px;
-      display: inline-block;
+  width: 140px;
+  max-width: 42vw;
+  height: auto;
+  display: block;
     }
 
     .wordmark{
@@ -142,6 +145,12 @@
       .container{ padding: 32px 18px; }
       .logo-mark{ width: 92px; height: 92px; }
     }
+
+    @media (min-width: 768px){
+  .logo-mark{
+    width: 160px;
+  }
+}
   </style>
 </head>
 
@@ -149,15 +158,34 @@
   <main class="container">
     <header class="brand">
       <!-- Minimal “finch + balance” mark (silhouette-ish), emerald primary with gold accent -->
-      <img
-  src="/assets/logo.png"
-  srcset="/assets/logo@2x.png 2x"
-  alt="Unbundled Finch — Advocacy and Justice"
-  class="logo-mark"
-/>
+      span class="accent">•</span> Advocacy <span class="accent">•</span> Justice</p>
+  <header class="brand">
 
-      <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
-      <p class="tagline">Integrity <span class="accent">•</span> Advocacy <span class="accent">•</span> Justice</p>
+  <img
+    src="/assets/logo.png"
+    srcset="/assets/logo@2x.png 2x"
+    alt="Unbundled Finch — Advocacy and Justice"
+    class="logo-mark"
+  />
+
+  <div style="height:1px;width:120px;background:rgba(15,61,46,.2);margin:10px auto 0;"></div>
+
+  <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
+
+  <header class="brand">
+
+  <img
+    src="/assets/logo.png"
+    srcset="/assets/logo@2x.png 2x"
+    alt="Unbundled Finch — Advocacy and Justice"
+    class="logo-mark"
+  />
+
+  <div style="height:1px;width:120px;background:rgba(15,61,46,.2);margin:10px auto 0;"></div>
+
+  <h1 class="wordmark">UNBUNDLED<br/>FINCH</h1>
+
+</header>
     </header>
 
     <hr class="rule" />
