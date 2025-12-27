@@ -24,7 +24,7 @@
       --radius: 14px;
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing: border-box; }
 
     body{
       margin: 0;
@@ -144,10 +144,13 @@
       color: rgba(31,42,46,.72);
     }
 
-      <p class="disclaimer">
-       Advocacy intake: <strong>advocacy@unbundledfinch.com</strong>
-      </p>
-    
+    .contacts{
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+    }
+
     /* UNIFORM UPPERCASE FOR VISIBLE COPY */
     .copy,
     .tagline,
@@ -210,6 +213,13 @@
       <strong>Notice:</strong> Unbundled Finch is an advocacy and information-intake platform and
       <strong>does not provide legal advice</strong>, represent clients, or act as a custodian of records.
     </p>
+
+    <div class="disclaimer contacts" aria-label="Contact email addresses">
+      <div>Advocacy intake: <strong>advocacy@unbundledfinch.com</strong></div>
+      <div>Vanguard: <strong>vanguard@unbundledfinch.com</strong></div>
+      <div>Justice: <strong>justice@unbundledfinch.com</strong></div>
+    </div>
+
   </main>
 </body>
 </html>
