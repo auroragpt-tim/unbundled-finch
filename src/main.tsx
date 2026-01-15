@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./index.css";
 
-// TEMP DEBUG — REMOVE AFTER FIX
+/**
+ * STEP A: HARD BYPASS APP
+ * If you can see the message on the page,
+ * React + Netlify are working.
+ */
+
 window.onerror = function (message, source, lineno, colno, error) {
   const pre = document.createElement("pre");
   pre.style.whiteSpace = "pre-wrap";
@@ -19,50 +23,28 @@ window.onerror = function (message, source, lineno, colno, error) {
   document.body.appendChild(pre);
 };
 
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { error: Error | null }
-> {
-  constructor(props: any) {
-    super(props);
-    this.state = { error: null };
-  }
+const root = document.getElementById("root");
 
-  static getDerivedStateFromError(error: Error) {
-    return { error };
-  }
-
-  componentDidCatch(error: Error) {
-    console.error(error);
-  }
-
-  render() {
-    if (this.state.error) {
-      return (
-        <pre
-          style={{
-            whiteSpace: "pre-wrap",
-            padding: 16,
-            color: "red",
-            fontFamily: "monospace",
-          }}
-        >
-          {"REACT ERROR\n\n" +
-            this.state.error.message +
-            "\n\n" +
-            this.state.error.stack}
-        </pre>
-      );
-    }
-
-    return this.props.children;
-  }
+if (!root) {
+  document.body.innerHTML =
+    "<pre style='color:red;font-family:monospace'>❌ No #root element found</pre>";
+} else {
+  ReactDOM.createRoot(root).render(
+    <div
+      style={{
+        padding: 24,
+        fontFamily: "monospace",
+        fontSize: 16,
+      }}
+    >
+      ✅ MAIN.TSX RENDERED  
+      <br />
+      React is alive.  
+      <br />
+      Netlify is serving correctly.  
+      <br />
+      <br />
+      If you see this, the crash is **inside App / routes / components**.
+    </div>
+  );
 }
-
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </React.StrictMode>
-);
