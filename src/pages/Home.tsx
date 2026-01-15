@@ -1,6 +1,6 @@
 // src/pages/Home.tsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 
 export default function Home() {
   return (
@@ -24,10 +24,10 @@ export default function Home() {
         </div>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <Link to="/services" style={btnStyle}>Services</Link>
-          <Link to="/process" style={btnStyle}>Process</Link>
-          <Link to="/contact" style={btnStyle}>Contact</Link>
-          <Link to="/portal/login" style={btnStyle}>Portal Login</Link>
+          <Link href="/services" style={btnStyle}>Services</Link>
+          <Link href="/process" style={btnStyle}>Process</Link>
+          <Link href="/contact" style={btnStyle}>Contact</Link>
+          <Link href="/portal/login" style={btnStyle}>Portal Login</Link>
         </div>
       </div>
     </div>

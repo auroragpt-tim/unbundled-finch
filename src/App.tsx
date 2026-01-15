@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
+import Process from "./pages/Process";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
@@ -25,44 +26,127 @@ import Messages from "./pages/portal/Messages";
 import Settings from "./pages/portal/Settings";
 import NewRequest from "./pages/portal/NewRequest";
 
-console.log("UF App.tsx loaded — Wouter routing active");
+console.log("✓ App.tsx loaded — Wouter routing active (SINGLE ROUTER)");
 
 export default function App() {
   return (
-    <Layout>
-      <Switch>
-        {/* Public marketing pages */}
-        <Route path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/services" component={Services} />
-        <Route path="/pricing" component={Pricing} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/privacy" component={Privacy} />
-        <Route path="/terms" component={Terms} />
+    <Switch>
+      {/* Public marketing pages - wrapped in Layout */}
+      <Route path="/" nest>
+        <Layout>
+          <Home />
+        </Layout>
+      </Route>
 
-        {/* Auth */}
-        <Route path="/portal/login" component={Login} />
+      <Route path="/about" nest>
+        <Layout>
+          <About />
+        </Layout>
+      </Route>
 
-        {/* Portal (protected) */}
-        <Route path="/portal">
-          <ProtectedRoute>
-            <PortalLayout>
-              <Switch>
-                <Route path="/portal" component={Dashboard} />
-                <Route path="/portal/documents" component={Documents} />
-                <Route path="/portal/billing" component={Billing} />
-                <Route path="/portal/messages" component={Messages} />
-                <Route path="/portal/settings" component={Settings} />
-                <Route path="/portal/new" component={NewRequest} />
-                <Route component={NotFound} />
-              </Switch>
-            </PortalLayout>
-          </ProtectedRoute>
-        </Route>
+      <Route path="/services" nest>
+        <Layout>
+          <Services />
+        </Layout>
+      </Route>
 
-        {/* Catch-all */}
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
+      <Route path="/pricing" nest>
+        <Layout>
+          <Pricing />
+        </Layout>
+      </Route>
+
+      <Route path="/process" nest>
+        <Layout>
+          <Process />
+        </Layout>
+      </Route>
+
+      <Route path="/contact" nest>
+        <Layout>
+          <Contact />
+        </Layout>
+      </Route>
+
+      <Route path="/privacy" nest>
+        <Layout>
+          <Privacy />
+        </Layout>
+      </Route>
+
+      <Route path="/terms" nest>
+        <Layout>
+          <Terms />
+        </Layout>
+      </Route>
+
+      {/* Auth - Portal Login (public, no protection) */}
+      <Route path="/portal/login" nest>
+        <Layout>
+          <Login />
+        </Layout>
+      </Route>
+
+      {/* Portal Dashboard (protected) */}
+      <Route path="/portal" nest>
+        <ProtectedRoute>
+          <PortalLayout>
+            <Dashboard />
+          </PortalLayout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Portal Documents (protected) */}
+      <Route path="/portal/documents" nest>
+        <ProtectedRoute>
+          <PortalLayout>
+            <Documents />
+          </PortalLayout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Portal Billing (protected) */}
+      <Route path="/portal/billing" nest>
+        <ProtectedRoute>
+          <PortalLayout>
+            <Billing />
+          </PortalLayout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Portal Messages (protected) */}
+      <Route path="/portal/messages" nest>
+        <ProtectedRoute>
+          <PortalLayout>
+            <Messages />
+          </PortalLayout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Portal Settings (protected) */}
+      <Route path="/portal/settings" nest>
+        <ProtectedRoute>
+          <PortalLayout>
+            <Settings />
+          </PortalLayout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Portal New Request (protected) */}
+      <Route path="/portal/new" nest>
+        <ProtectedRoute>
+          <PortalLayout>
+            <NewRequest />
+          </PortalLayout>
+        </ProtectedRoute>
+      </Route>
+
+      {/* Catch-all 404 */}
+      <Route nest>
+        <Layout>
+          <NotFound />
+        </Layout>
+      </Route>
+    </Switch>
   );
 }

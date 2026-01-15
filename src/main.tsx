@@ -3,8 +3,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "wouter";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 /**
  * Crash reporter that shows errors ON SCREEN (helpful on mobile).
@@ -89,9 +90,13 @@ if (!root) {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <ErrorBoundary>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <Router>
+          <AuthProvider>
+            <ThemeProvider defaultTheme="light">
+              <App />
+            </ThemeProvider>
+          </AuthProvider>
+        </Router>
       </ErrorBoundary>
     </React.StrictMode>
   );
