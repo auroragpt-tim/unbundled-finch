@@ -1,7 +1,8 @@
+// src/components/Layout.tsx
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "wouter";
 
-export default function Layout() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <header
@@ -20,16 +21,22 @@ export default function Layout() {
         </div>
 
         <nav style={{ display: "flex", gap: 14, fontSize: 14 }}>
-          <Link to="/" style={{ textDecoration: "none" }}>Home</Link>
-          <Link to="/services" style={{ textDecoration: "none" }}>Services</Link>
-          <Link to="/portal" style={{ textDecoration: "none" }}>Portal</Link>
-          <Link to="/contact" style={{ textDecoration: "none" }}>Contact</Link>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            Home
+          </Link>
+          <Link href="/services" style={{ textDecoration: "none" }}>
+            Services
+          </Link>
+          <Link href="/portal" style={{ textDecoration: "none" }}>
+            Portal
+          </Link>
+          <Link href="/contact" style={{ textDecoration: "none" }}>
+            Contact
+          </Link>
         </nav>
       </header>
 
-      <main style={{ flex: 1, padding: "18px 20px" }}>
-        <Outlet />
-      </main>
+      <main style={{ flex: 1, padding: "18px 20px" }}>{children}</main>
 
       <footer
         style={{
