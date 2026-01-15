@@ -1,19 +1,18 @@
+// src/components/ProtectedRoute.tsx
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Redirect } from "wouter";
 import { useAuth } from "../contexts/AuthContext";
 
 type Props = {
-  /** Optional: if you wrap routes like <ProtectedRoute><MyPage/></ProtectedRoute> */
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 export default function ProtectedRoute({ children }: Props) {
   const { isAuthenticated } = useAuth();
 
-  if (!isAuthenticated) return <Navigate to="/portal/login" replace />;
+  if (!isAuthenticated) {
+    return <Redirect to="/portal/login" />;
+  }
 
-  // Supports both patterns:
-  // 1) <Route element={<ProtectedRoute />}> ...nested routes... </Route>
-  // 2) <Route element={<ProtectedRoute><Page/></ProtectedRoute>} />
-  return children ? <>{children}</> : <Outlet />;
+  return <>{children}</>;
 }
