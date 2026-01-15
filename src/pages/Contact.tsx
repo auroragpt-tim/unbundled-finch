@@ -19,17 +19,21 @@ export default function Contact() {
         method: "POST",
         body: formData,
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
 
-      if (response.ok) {
-        toast.success("Message sent successfully!");
+      const data = await response.json();
+
+      if (response.ok || data.ok) {
+        toast.success("Message sent successfully! We'll be in touch soon.");
         form.reset();
       } else {
-        toast.error("Failed to send message. Please try again.");
+        toast.error(data.error || "Failed to send message. Please try again.");
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast.error("An error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
