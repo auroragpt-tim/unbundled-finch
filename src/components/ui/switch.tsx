@@ -42,4 +42,20 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
         className={clsx(
           "relative inline-flex h-6 w-10 items-center rounded-full border transition-colors",
           value ? "bg-neutral-900" : "bg-white",
-          "border-neutral-300 disabled:cursor-not-allowed disabled
+          "border-neutral-300 disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        {...props}
+      >
+        <span
+          className={clsx(
+            "inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform",
+            value ? "translate-x-4" : "translate-x-1"
+          )}
+        />
+      </button>
+    );
+  }
+);
+
+Switch.displayName = "Switch";
