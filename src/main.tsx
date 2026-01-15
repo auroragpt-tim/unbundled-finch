@@ -1,13 +1,15 @@
+// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-/**
- * STEP B: Bring App back, but keep loud crash reporting.
- * We also print a checkpoint BEFORE App renders.
- */
+import { BrowserRouter } from "react-router-dom";
 
+/**
+ * Crash reporter that shows errors ON SCREEN (helpful on mobile).
+ * Keep it for now. Remove later once stable.
+ */
 function showGlobalError(message: unknown, error?: unknown) {
   const pre = document.createElement("pre");
   pre.style.whiteSpace = "pre-wrap";
@@ -36,7 +38,7 @@ window.onerror = function (message, source, lineno, colno, error) {
 };
 
 window.onunhandledrejection = function (event) {
-  showGlobalError("UNHANDLED PROMISE REJECTION", event?.reason);
+  showGlobalError("UNHANDLED PROMISE REJECTION", (event as any)?.reason);
 };
 
 class ErrorBoundary extends React.Component<
@@ -78,21 +80,6 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-function BootMarker() {
-  return (
-    <div
-      style={{
-        padding: 24,
-        fontFamily: "monospace",
-        fontSize: 16,
-        borderBottom: "1px solid #ddd",
-      }}
-    >
-      ✅ Step B: React mounted. About to render <App />...
-    </div>
-  );
-}
-
 const root = document.getElementById("root");
 
 if (!root) {
@@ -101,9 +88,10 @@ if (!root) {
 } else {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
-      <BootMarker />
       <ErrorBoundary>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ErrorBoundary>
     </React.StrictMode>
   );
