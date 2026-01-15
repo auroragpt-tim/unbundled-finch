@@ -1,106 +1,44 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import Layout from "./components/Layout";
-import PortalLayout from "./components/PortalLayout";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import { AuthProvider } from "./contexts/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
+// src/App.tsx
+import React from "react";
 
-// Public Pages
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import Process from "./pages/Process";
-import Pricing from "./pages/Pricing";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import NotFound from "./pages/NotFound";
+console.log("UF App.tsx loaded A1");
 
-// Portal Pages
-import Login from "./pages/portal/Login";
-import Dashboard from "./pages/portal/Dashboard";
-import NewRequest from "./pages/portal/NewRequest";
-import Documents from "./pages/portal/Documents";
-import Messages from "./pages/portal/Messages";
-import Billing from "./pages/portal/Billing";
-import Settings from "./pages/portal/Settings";
-
-function Router() {
+function BuildMarker() {
   return (
-    <Switch>
-      {/* Public Routes */}
-      <Route path="/">
-        <Layout><Home /></Layout>
-      </Route>
-      <Route path="/services">
-        <Layout><Services /></Layout>
-      </Route>
-      <Route path="/process">
-        <Layout><Process /></Layout>
-      </Route>
-      <Route path="/pricing">
-        <Layout><Pricing /></Layout>
-      </Route>
-      <Route path="/about">
-        <Layout><About /></Layout>
-      </Route>
-      <Route path="/contact">
-        <Layout><Contact /></Layout>
-      </Route>
-      <Route path="/privacy">
-        <Layout><Privacy /></Layout>
-      </Route>
-      <Route path="/terms">
-        <Layout><Terms /></Layout>
-      </Route>
-
-      {/* Portal Routes */}
-      <Route path="/portal">
-        <Login />
-      </Route>
-      <Route path="/portal/dashboard">
-        <ProtectedRoute><PortalLayout><Dashboard /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/new-request">
-        <ProtectedRoute><PortalLayout><NewRequest /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/documents">
-        <ProtectedRoute><PortalLayout><Documents /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/messages">
-        <ProtectedRoute><PortalLayout><Messages /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/billing">
-        <ProtectedRoute><PortalLayout><Billing /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/settings">
-        <ProtectedRoute><PortalLayout><Settings /></PortalLayout></ProtectedRoute>
-      </Route>
-
-      {/* 404 */}
-      <Route>
-        <Layout><NotFound /></Layout>
-      </Route>
-    </Switch>
+    <div
+      style={{
+        position: "fixed",
+        left: 16,
+        bottom: 16,
+        zIndex: 999999,
+        padding: "10px 14px",
+        borderRadius: 9999,
+        background: "rgba(0,0,0,0.85)",
+        color: "white",
+        fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+        fontSize: 14,
+        lineHeight: 1,
+        boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
+        userSelect: "none",
+      }}
+    >
+      UF Build Marker: 2026-01-15 A1
+    </div>
   );
 }
 
-function App() {
+export default function App() {
   return (
-    <ErrorBoundary>
-      <AuthProvider>
-        <ThemeProvider defaultTheme="light">
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
-        </ThemeProvider>
-      </AuthProvider>
-    </ErrorBoundary>
+    <>
+      <div style={{ padding: 20, fontFamily: "monospace" }}>
+        <h1 style={{ margin: "0 0 12px" }}>UF APP LOADED (A1)</h1>
+        <p style={{ margin: 0 }}>
+          If you can see this, the crash is inside your routes/layout/components
+          (not Netlify).
+        </p>
+      </div>
+
+      <BuildMarker />
+    </>
   );
 }
-
-export default App;
