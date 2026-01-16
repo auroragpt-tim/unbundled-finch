@@ -1,152 +1,94 @@
-// src/App.tsx
-import React from "react";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
-
+import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
 import PortalLayout from "./components/PortalLayout";
-import ProtectedRoute from "./components/ProtectedRoute";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
-// Public pages
+// Public Pages
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import Pricing from "./pages/Pricing";
 import Process from "./pages/Process";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
+import Pricing from "./pages/Pricing";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-// Portal pages
-import Dashboard from "./pages/portal/Dashboard";
+// Portal Pages
 import Login from "./pages/portal/Login";
-import Documents from "./pages/portal/Documents";
-import Billing from "./pages/portal/Billing";
-import Messages from "./pages/portal/Messages";
-import Settings from "./pages/portal/Settings";
+import Dashboard from "./pages/portal/Dashboard";
 import NewRequest from "./pages/portal/NewRequest";
+import Documents from "./pages/portal/Documents";
+import Messages from "./pages/portal/Messages";
+import Billing from "./pages/portal/Billing";
+import Settings from "./pages/portal/Settings";
 
-console.log("✓ App.tsx loaded — Wouter routing active (SINGLE ROUTER)");
-
-export default function App() {
+function Router() {
   return (
     <Switch>
-      {/* Public marketing pages - wrapped in Layout */}
-      <Route path="/" nest>
-        <Layout>
-          <Home />
-        </Layout>
+      {/* Public Routes */}
+      <Route path="/">
+        <Layout><Home /></Layout>
+      </Route>
+      <Route path="/services">
+        <Layout><Services /></Layout>
+      </Route>
+      <Route path="/process">
+        <Layout><Process /></Layout>
+      </Route>
+      <Route path="/pricing">
+        <Layout><Pricing /></Layout>
+      </Route>
+      <Route path="/about">
+        <Layout><About /></Layout>
+      </Route>
+      <Route path="/contact">
+        <Layout><Contact /></Layout>
       </Route>
 
-      <Route path="/about" nest>
-        <Layout>
-          <About />
-        </Layout>
+      {/* Portal Routes */}
+      <Route path="/portal">
+        <Login />
+      </Route>
+      <Route path="/portal/dashboard">
+        <PortalLayout><Dashboard /></PortalLayout>
+      </Route>
+      <Route path="/portal/new-request">
+        <PortalLayout><NewRequest /></PortalLayout>
+      </Route>
+      <Route path="/portal/documents">
+        <PortalLayout><Documents /></PortalLayout>
+      </Route>
+      <Route path="/portal/messages">
+        <PortalLayout><Messages /></PortalLayout>
+      </Route>
+      <Route path="/portal/billing">
+        <PortalLayout><Billing /></PortalLayout>
+      </Route>
+      <Route path="/portal/settings">
+        <PortalLayout><Settings /></PortalLayout>
       </Route>
 
-      <Route path="/services" nest>
-        <Layout>
-          <Services />
-        </Layout>
-      </Route>
-
-      <Route path="/pricing" nest>
-        <Layout>
-          <Pricing />
-        </Layout>
-      </Route>
-
-      <Route path="/process" nest>
-        <Layout>
-          <Process />
-        </Layout>
-      </Route>
-
-      <Route path="/contact" nest>
-        <Layout>
-          <Contact />
-        </Layout>
-      </Route>
-
-      <Route path="/privacy" nest>
-        <Layout>
-          <Privacy />
-        </Layout>
-      </Route>
-
-      <Route path="/terms" nest>
-        <Layout>
-          <Terms />
-        </Layout>
-      </Route>
-
-      {/* Auth - Portal Login (public, no protection) */}
-      <Route path="/portal/login" nest>
-        <Layout>
-          <Login />
-        </Layout>
-      </Route>
-
-      {/* Portal Dashboard (protected) */}
-      <Route path="/portal" nest>
-        <ProtectedRoute>
-          <PortalLayout>
-            <Dashboard />
-          </PortalLayout>
-        </ProtectedRoute>
-      </Route>
-
-      {/* Portal Documents (protected) */}
-      <Route path="/portal/documents" nest>
-        <ProtectedRoute>
-          <PortalLayout>
-            <Documents />
-          </PortalLayout>
-        </ProtectedRoute>
-      </Route>
-
-      {/* Portal Billing (protected) */}
-      <Route path="/portal/billing" nest>
-        <ProtectedRoute>
-          <PortalLayout>
-            <Billing />
-          </PortalLayout>
-        </ProtectedRoute>
-      </Route>
-
-      {/* Portal Messages (protected) */}
-      <Route path="/portal/messages" nest>
-        <ProtectedRoute>
-          <PortalLayout>
-            <Messages />
-          </PortalLayout>
-        </ProtectedRoute>
-      </Route>
-
-      {/* Portal Settings (protected) */}
-      <Route path="/portal/settings" nest>
-        <ProtectedRoute>
-          <PortalLayout>
-            <Settings />
-          </PortalLayout>
-        </ProtectedRoute>
-      </Route>
-
-      {/* Portal New Request (protected) */}
-      <Route path="/portal/new" nest>
-        <ProtectedRoute>
-          <PortalLayout>
-            <NewRequest />
-          </PortalLayout>
-        </ProtectedRoute>
-      </Route>
-
-      {/* Catch-all 404 */}
-      <Route nest>
-        <Layout>
-          <NotFound />
-        </Layout>
+      {/* 404 */}
+      <Route>
+        <Layout><NotFound /></Layout>
       </Route>
     </Switch>
   );
 }
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <ThemeProvider defaultTheme="light">
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default App;

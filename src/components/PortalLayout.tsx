@@ -1,67 +1,70 @@
-// src/components/PortalLayout.tsx
-import React from "react";
 import { Link, useLocation } from "wouter";
-
-function PortalNavLink({
-  href,
-  children,
-  end = false,
-}: {
-  href: string;
-  children: React.ReactNode;
-  end?: boolean;
-}) {
-  const [location] = useLocation();
-
-  const isActive = end ? location === href : location === href || location.startsWith(href + "/");
-
-  const style: React.CSSProperties = {
-    textDecoration: "none",
-    padding: "10px 12px",
-    borderRadius: 8,
-    display: "block",
-    fontSize: 14,
-    fontWeight: isActive ? 700 : 500,
-    background: isActive ? "rgba(0,0,0,0.06)" : "transparent",
-    color: "inherit",
-  };
-
-  return (
-    <Link href={href} style={style}>
-      {children}
-    </Link>
-  );
-}
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export default function PortalLayout({ children }: { children: React.ReactNode }) {
+  const [location] = useLocation();
+
+  const navItems = [
+    { href: "/portal", label: "Dashboard" },
+    { href: "/portal/new-request", label: "New Request" },
+    { href: "/portal/documents", label: "Documents" },
+    { href: "/portal/messages", label: "Messages" },
+    { href: "/portal/billing", label: "Billing" },
+    { href: "/portal/settings", label: "Settings" },
+  ];
+
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "240px 1fr", gap: 18 }}>
-      <aside
-        style={{
-          border: "1px solid rgba(0,0,0,0.1)",
-          borderRadius: 12,
-          padding: 12,
-          height: "fit-content",
-        }}
-      >
-        <div style={{ fontWeight: 800, marginBottom: 10 }}>Client Portal</div>
+    <div className="min-h-screen bg-secondary/10 font-sans text-foreground flex flex-col">
 
-        <nav style={{ display: "grid", gap: 6 }}>
-          <PortalNavLink href="/portal" end>
-            Overview
-          </PortalNavLink>
-          <PortalNavLink href="/portal/upload">Upload</PortalNavLink>
-          <PortalNavLink href="/portal/jobs">Jobs</PortalNavLink>
-          <PortalNavLink href="/portal/settings">Settings</PortalNavLink>
-        </nav>
 
-        <div style={{ marginTop: 12, fontSize: 12, opacity: 0.7, lineHeight: 1.35 }}>
-          This is a demo portal UI (no real document storage yet).
-        </div>
-      </aside>
+      <div className="flex flex-1">
+        {/* Sidebar */}
+        <aside className="w-64 bg-background border-r border-border hidden md:flex flex-col">
+          <div className="p-6 border-b border-border">
+            <Link href="/">
+              <div className="flex items-center gap-2 cursor-pointer">
+                <img src="/assets/logo.svg" alt="Unbundled Finch" className="h-6 w-auto" />
+              </div>
+            </Link>
+          </div>
+          
+          <nav className="flex-1 p-4 space-y-1">
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <div 
+                  className={cn(
+                    "px-4 py-3 text-sm font-medium cursor-pointer transition-colors border-l-2",
+                    location === item.href 
+                      ? "bg-secondary/50 border-primary text-primary" 
+                      : "border-transparent text-muted-foreground hover:bg-secondary/30 hover:text-foreground"
+                  )}
+                >
+                  {item.label}
+                </div>
+              </Link>
+            ))}
+          </nav>
 
-      <section>{children}</section>
-   
+          <div className="p-4 border-t border-border">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xs">
+                JD
+              </div>
+              <div className="text-sm">
+                <div className="font-bold">Jane Doe</div>
+                <div className="text-xs text-muted-foreground">Client Account</div>
+              </div>
+            </div>
+            <Button variant="outline" className="w-full rounded-none text-xs uppercase font-bold">Sign Out</Button>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-8 overflow-y-auto">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

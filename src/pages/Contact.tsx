@@ -1,43 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/meeeqkyp", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      });
-
-      const data = await response.json();
-
-      if (response.ok || data.ok) {
-        toast.success("Message sent successfully! We'll be in touch soon.");
-        form.reset();
-      } else {
-        toast.error(data.error || "Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      toast.error("An error occurred. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const onSubmit = (data: any) => {
+    console.log(data);
+    toast.success("Message sent successfully");
+    reset();
   };
 
   return (
@@ -54,30 +27,30 @@ export default function Contact() {
       <section className="container py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase">First Name</label>
-                  <Input name="firstName" required className="rounded-none border-border bg-background" placeholder="Jane" />
+                  <Input {...register("firstName")} className="rounded-none border-border bg-background" placeholder="Jane" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase">Last Name</label>
-                  <Input name="lastName" required className="rounded-none border-border bg-background" placeholder="Doe" />
+                  <Input {...register("lastName")} className="rounded-none border-border bg-background" placeholder="Doe" />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase">Email</label>
-                <Input name="email" type="email" required className="rounded-none border-border bg-background" placeholder="jane@example.com" />
+                <Input {...register("email")} type="email" className="rounded-none border-border bg-background" placeholder="jane@example.com" />
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase">Message</label>
-                <Textarea name="message" required className="rounded-none border-border bg-background min-h-[150px]" placeholder="How can we help you?" />
+                <Textarea {...register("message")} className="rounded-none border-border bg-background min-h-[150px]" placeholder="How can we help you?" />
               </div>
 
-              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full rounded-none uppercase font-bold tracking-wider">
-                {isSubmitting ? "Sending..." : "Send Message"}
+              <Button type="submit" size="lg" className="w-full rounded-none uppercase font-bold tracking-wider">
+                Send Message
               </Button>
             </form>
           </div>
@@ -85,7 +58,7 @@ export default function Contact() {
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-bold uppercase mb-2">Email</h3>
-              <p className="text-muted-foreground">Vanguard@unbundledfinch.com</p>
+              <p className="text-muted-foreground">hello@unbundledfinch.com</p>
             </div>
             <div>
               <h3 className="text-xl font-bold uppercase mb-2">Office</h3>
