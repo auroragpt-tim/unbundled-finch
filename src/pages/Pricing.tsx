@@ -20,7 +20,7 @@ export default function Pricing() {
           <div className="border border-border p-8 flex flex-col">
             <h3 className="text-xl font-bold uppercase mb-2">Ad-Hoc</h3>
             <p className="text-sm text-muted-foreground mb-8 h-10">For occasional needs.</p>
-            <div className="text-4xl font-bold mb-8">Pay as you go</div>
+            <div className="text-4xl font-bold mb-8 uppercase">PAY AS YOU GO</div>
             <ul className="space-y-4 mb-12 flex-1 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">✓</span> Standard turnaround (48h)
@@ -67,7 +67,7 @@ export default function Pricing() {
           <div className="border border-border p-8 flex flex-col">
             <h3 className="text-xl font-bold uppercase mb-2">Enterprise</h3>
             <p className="text-sm text-muted-foreground mb-8 h-10">For firms & organizations.</p>
-            <div className="text-4xl font-bold mb-8">Custom</div>
+            <div className="text-4xl font-bold mb-8 uppercase">CUSTOM</div>
             <ul className="space-y-4 mb-12 flex-1 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">✓</span> Same-day turnaround available

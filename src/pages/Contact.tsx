@@ -58,7 +58,7 @@ export default function Contact() {
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-bold uppercase mb-2">Email</h3>
-              <p className="text-muted-foreground">hello@unbundledfinch.com</p>
+              <p className="text-muted-foreground">vanguard@unbundledfinch.com</p>
             </div>
             <div>
               <h3 className="text-xl font-bold uppercase mb-2">Office</h3>

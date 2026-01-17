@@ -102,7 +102,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="col-span-1">
             <h4 className="font-bold uppercase tracking-widest text-xs mb-4">Contact</h4>
             <p className="text-sm text-muted-foreground mb-2">
-              hello@unbundledfinch.com
+              vanguard@unbundledfinch.com
             </p>
 
           </div>

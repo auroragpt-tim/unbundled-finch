@@ -86,7 +86,7 @@ export default function Home() {
             />
           </div>
           <div className="p-12 md:p-24 flex flex-col justify-center bg-secondary/10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase tracking-tight">The Process</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase tracking-tight">THE PROCESS</h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               We have unbundled the traditional legal support model. You pay only for the specific document processing tasks you need, when you need them.
             </p>
@@ -120,7 +120,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="w-full py-32 bg-primary text-primary-foreground">
         <div className="container text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">READY TO BEGIN?</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 uppercase tracking-tight">READY TO BEGIN?</h2>
           <p className="text-xl md:text-2xl opacity-80 mb-12 max-w-2xl mx-auto font-light">
             Access our secure client portal to start your first request.
           </p>

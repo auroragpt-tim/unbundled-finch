@@ -75,7 +75,7 @@ export default function Process() {
 
       <section className="py-20 border-t border-border bg-secondary/10">
         <div className="container text-center">
-          <h2 className="text-3xl font-bold uppercase mb-8">Ready to start?</h2>
+          <h2 className="text-3xl font-bold uppercase mb-8">READY TO START?</h2>
           <Link href="/portal">
             <Button size="lg" className="rounded-none px-12 h-14 uppercase font-bold tracking-wider">
               Go to Portal
