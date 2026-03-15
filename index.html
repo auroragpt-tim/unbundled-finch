@@ -10,5 +10,33 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Birria Bacana Strategy Portal Easter Egg -->
+    <div id="birria-easter-egg" style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    ">
+      <a href="https://vincent.unbundledfinch.com" title="Strategy Portal" target="_blank" rel="noopener noreferrer">
+        <img 
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663307603695/Aomcg4NRcVuWbEb9HVabqB/birria-easter-egg-taco-SCWGqETYri4A4ffaB6GMM2.webp" 
+          alt="Birria Bacana" 
+          width="64" 
+          height="64"
+          style="display: block; border: none;"
+        />
+      </a>
+    </div>
+
+    <!-- Optional: Add hover effect -->
+    <style>
+      #birria-easter-egg:hover {
+        opacity: 1;
+      }
+    </style>
   </body>
 </html>
