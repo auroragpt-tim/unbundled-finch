@@ -1,0 +1,5 @@
+- [ ] Update netlify.toml to publish 'dist' instead of 'dist/public'
+- [ ] Verify Layout.tsx does not import react-router-dom
+- [ ] Verify PortalLayout.tsx does not import react-router-dom
+- [ ] Verify ProtectedRoute.tsx does not import react-router-dom
+- [ ] Create final zip archive unbundled-finch-final.zip
