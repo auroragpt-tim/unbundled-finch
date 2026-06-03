@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unbundled Finch | Legal Document Processing Services</title>
+  <meta name="description" content="Precise legal document processing for attorneys and legal professionals. Table of Authorities, eBinder Assembly, Pleading Formatting, PDF Remediation, and more. Court-ready delivery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────── */
+    :root {
+      --ink:        #0A0A0A;
+      --slate:      #333333;
+      --slate-mid:  #666666;
+      --paper:      #F2F2F2;
+      --bone:       #FAF9F7;
+      --arch-blue:  #2F4B86;
+      --field-grn:  #5E6B57;
+      --border:     #DDDBD6;
+      --sans:       'IBM Plex Sans', sans-serif;
+      --serif:      'Libre Baskerville', serif;
+      --radius:     2px;
+    }
+
+    /* ─── RESET + BASE ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { background: var(--bone); color: var(--slate); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: var(--arch-blue); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--ink); }
+    button { font-family: var(--sans); cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    /* ─── SKIP LINK ─────────────────────────────────────────── */
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--arch-blue); color: #fff; padding: 8px 16px; font-size: .75rem; letter-spacing: .08em; z-index: 9999; transition: top .2s; }
+    .skip-link:focus { top: 0; }
+
+    /* ─── LAYOUT ────────────────────────────────────────────── */
+    .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    @media (max-width: 768px) { .wrap { padding: 0 1.25rem; } }
+
+    /* ─── EYEBROW / CLASSIFICATION LABEL ───────────────────── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-family: var(--sans); font-size: .6875rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--slate-mid);
+    }
+    .eyebrow::before {
+      content: ''; display: block; width: 2px; height: 1em;
+      background: var(--arch-blue); flex-shrink: 0;
+    }
+
+    /* ─── TYPOGRAPHY ────────────────────────────────────────── */
+    .display { font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.1; color: var(--ink); letter-spacing: -.01em; }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 4.5vw, 3.25rem); line-height: 1.15; color: var(--ink); }
+    h2 { font-family: var(--sans); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.25; color: var(--ink); letter-spacing: -.01em; }
+    h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; line-height: 1.35; color: var(--ink); }
+    p { font-size: 1.0625rem; line-height: 1.68; }
+    small { font-size: .8125rem; }
+
+    /* ─── RULE LINE ─────────────────────────────────────────── */
+    .rule { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ─── BUTTONS ───────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--sans); font-size: .6875rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .875rem 1.5rem;
+      border-radius: var(--radius);
+      transition: background .2s, color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--ink); color: var(--bone); }
+    .btn-primary:hover { background: #1a1a1a; color: var(--bone); }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: var(--bone); }
+    .btn-portal { background: var(--arch-blue); color: #fff; }
+    .btn-portal:hover { background: #243d70; color: #fff; }
+    .btn-portal-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); }
+    .btn-portal-outline:hover { border-color: #fff; }
+
+    /* ─── NAVIGATION ────────────────────────────────────────── */
+    #site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,249,247,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo-mark { width: 28px; height: 20px; flex-shrink: 0; }
+    .nav-wordmark { font-family: var(--sans); font-weight: 700; font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-family: var(--sans); font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--arch-blue); }
+    .nav-cta { margin-left: 1rem; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all .25s; }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--ink); z-index: 200;
+      flex-direction: column; padding: 2rem 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-close { align-self: flex-end; color: var(--bone); font-size: 1.5rem; margin-bottom: 3rem; background: none; border: none; cursor: pointer; }
+    .mobile-menu nav { display: flex; flex-direction: column; gap: 1.5rem; flex: 1; }
+    .mobile-menu nav a { font-family: var(--sans); font-size: 1.375rem; font-weight: 500; letter-spacing: .04em; color: var(--bone); text-decoration: none; }
+    .mobile-menu nav a:hover { color: rgba(250,249,247,.6); }
+    .mobile-menu .btn-portal { width: 100%; justify-content: center; margin-top: auto; }
+
+    @media (max-width: 1024px) { .nav-links, .nav-cta { display: none; } .nav-hamburger { display: flex; } }
+
+    /* ─── HERO ──────────────────────────────────────────────── */
+    #hero {
+      background: var(--bone);
+      padding: 6rem 0 5rem;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-eyebrow { margin-bottom: 2rem; }
+    .hero-headline { margin-bottom: 1.5rem; }
+    .hero-sub {
+      font-size: 1.1rem; font-weight: 500; color: var(--slate);
+      letter-spacing: .01em; margin-bottom: 1rem;
+    }
+    .hero-body { color: var(--slate-mid); max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-visual { display: flex; align-items: center; justify-content: center; }
+    .finch-mark-large { width: 100%; max-width: 420px; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      #hero { padding: 4rem 0 3.5rem; }
+    }
+
+    /* ─── TRUST BAR ─────────────────────────────────────────── */
+    #trust-bar { background: var(--ink); padding: 2.5rem 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; align-items: start; }
+    .trust-item { display: flex; align-items: flex-start; gap: .875rem; }
+    .trust-icon { flex-shrink: 0; width: 20px; margin-top: .15rem; color: var(--arch-blue); }
+    .trust-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .trust-label { font-family: var(--sans); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--bone); margin-bottom: .2rem; }
+    .trust-desc { font-size: .8125rem; color: rgba(250,249,247,.55); line-height: 1.55; }
+    @media (max-width: 768px) { .trust-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+    @media (max-width: 480px) { .trust-grid { grid-template-columns: 1fr; } }
+
+    /* ─── SECTION SHARED ────────────────────────────────────── */
+    .section { padding: 6rem 0; }
+    .section-alt { background: var(--paper); }
+    .section-dark { background: var(--ink); }
+    .section-blue { background: var(--arch-blue); }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header .eyebrow { margin-bottom: 1.25rem; }
+    .section-intro { color: var(--slate-mid); max-width: 580px; margin-top: 1rem; font-size: 1.0625rem; }
+    @media (max-width: 768px) { .section { padding: 4rem 0; } .section-header { margin-bottom: 2.5rem; } }
+
+    /* ─── SERVICES ──────────────────────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .svc-card {
+      background: var(--bone);
+      padding: 1.75rem 1.5rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: background .2s;
+    }
+    .svc-card:hover { background: var(--paper); }
+    .svc-ref { font-family: var(--sans); font-size: .625rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--slate-mid); }
+    .svc-icon { color: var(--arch-blue); }
+    .svc-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-name { font-size: .9375rem; font-weight: 700; color: var(--ink); letter-spacing: .01em; }
+    .svc-divider { border: none; border-top: 1px solid var(--border); }
+    .svc-desc { font-size: .875rem; line-height: 1.65; color: var(--slate-mid); }
+    .services-footer { margin-top: 2rem; display: flex; align-items: center; justify-content: flex-end; }
+    .services-link { font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--arch-blue); display: flex; align-items: center; gap: .5rem; }
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* ─── WHO WE SERVE ──────────────────────────────────────── */
+    .clients-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .clients-tags { display: flex; flex-wrap: wrap; gap: .625rem; margin-top: 2rem; }
+    .client-tag {
+      font-family: var(--sans); font-size: .6875rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--slate);
+      background: var(--bone);
+    }
+    .clients-statement {
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      background: var(--bone);
+      border-radius: var(--radius);
+    }
+    .clients-statement blockquote {
+      font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
+      line-height: 1.5; color: var(--ink);
+      font-style: italic;
+      border-left: 2px solid var(--arch-blue);
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .clients-statement p { font-size: .9375rem; color: var(--slate-mid); }
+    @media (max-width: 900px) { .clients-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* ─── PROCESS ───────────────────────────────────────────── */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .process-grid::before { content: ''; position: absolute; top: 1.75rem; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0; }
+    .process-step { padding: 0 1.5rem 0 0; position: relative; z-index: 1; }
+    .process-step:first-child { padding-left: 0; }
+    .step-num {
+      width: 3.5rem; height: 3.5rem;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bone);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--sans); font-size: .8125rem; font-weight: 700;
+      color: var(--arch-blue); letter-spacing: .04em;
+      margin-bottom: 1.75rem;
+    }
+    .step-title { font-size: .9375rem; font-weight: 700; color: var(--ink); margin-bottom: .75rem; letter-spacing: .01em; }
+    .step-desc { font-size: .875rem; line-height: 1.7; color: var(--slate-mid); }
+    .process-link { margin-top: 3rem; }
+    .process-link a { font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--arch-blue); display: inline-flex; align-items: center; gap: .5rem; }
+    @media (max-width: 900px) { .process-grid { grid-template-columns: 1fr; gap: 2.5rem; } .process-grid::before { display: none; } .process-step { padding: 0; } }
+
+    /* ─── STANDARDS / QA ────────────────────────────────────── */
+    .standards-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .standards-body { color: rgba(250,249,247,.75); }
+    .standards-body h2 { color: var(--bone); margin-bottom: 1.5rem; }
+    .standards-body p { margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.7; }
+    .standards-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); }
+    .std-card { background: rgba(255,255,255,.04); padding: 1.5rem; transition: background .2s; }
+    .std-card:hover { background: rgba(255,255,255,.07); }
+    .std-icon { color: var(--arch-blue); margin-bottom: .875rem; }
+    .std-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .std-label { font-family: var(--sans); font-size: .6875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bone); margin-bottom: .5rem; }
+    .std-desc { font-size: .8125rem; line-height: 1.6; color: rgba(250,249,247,.5); }
+    @media (max-width: 900px) { .standards-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* ─── ABOUT TEASER ──────────────────────────────────────── */
+    .about-inner { display: grid; grid-template-columns: 2fr 1fr; gap: 6rem; align-items: center; }
+    .about-body p { color: var(--slate-mid); margin-bottom: 1.25rem; }
+    .about-link { font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--arch-blue); display: inline-flex; align-items: center; gap: .5rem; margin-top: .5rem; }
+    .about-principles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .principle-item { display: flex; flex-direction: column; gap: .25rem; }
+    .principle-name { font-size: .6875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+    .principle-desc { font-size: .8125rem; color: var(--slate-mid); line-height: 1.55; }
+    @media (max-width: 900px) { .about-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* ─── CTA BAND ──────────────────────────────────────────── */
+    #cta-band { background: var(--arch-blue); padding: 5rem 0; text-align: center; }
+    .cta-band-headline { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 1rem; line-height: 1.15; }
+    .cta-band-body { color: rgba(255,255,255,.7); max-width: 480px; margin: 0 auto 2.5rem; font-size: 1.0625rem; }
+    .cta-band-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: #fff; color: var(--arch-blue); }
+    .btn-white:hover { background: var(--bone); color: var(--arch-blue); }
+
+    /* ─── FAQ ───────────────────────────────────────────────── */
+    .faq-list { max-width: 800px; }
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+      width: 100%; text-align: left;
+      padding: 1.25rem 0;
+      font-family: var(--sans); font-size: .9375rem; font-weight: 600; color: var(--ink);
+      background: none; border: none; cursor: pointer;
+      transition: color .2s;
+    }
+    .faq-q:hover { color: var(--arch-blue); }
+    .faq-q[aria-expanded="true"] { color: var(--arch-blue); }
+    .faq-icon { flex-shrink: 0; width: 18px; height: 18px; transition: transform .25s; }
+    .faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 0 1.5rem; }
+    .faq-a p { font-size: .9375rem; color: var(--slate-mid); line-height: 1.7; }
+    .faq-a.open { display: block; }
+
+    /* ─── CONTACT ───────────────────────────────────────────── */
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info p { color: var(--slate-mid); margin-bottom: 1.5rem; }
+    .contact-email { font-size: .9375rem; color: var(--arch-blue); font-weight: 500; display: inline-flex; align-items: center; gap: .5rem; }
+    .contact-portal { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .contact-portal p { font-size: .875rem; color: var(--slate-mid); margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .375rem; margin-bottom: 1.25rem; }
+    .form-group label { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: .75rem 1rem;
+      font-family: var(--sans); font-size: .9375rem; color: var(--ink);
+      background: var(--bone); border: 1px solid var(--border);
+      border-radius: var(--radius); transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--arch-blue);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-disclaimer { font-size: .75rem; color: var(--slate-mid); margin-top: 1rem; font-style: italic; }
+    @media (max-width: 900px) { .contact-inner { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
+    footer { background: var(--ink); padding: 4rem 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+    .footer-logo-mark { margin-bottom: .75rem; }
+    .footer-wordmark { font-family: var(--sans); font-size: .6875rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--bone); margin-bottom: .25rem; }
+    .footer-tagline { font-family: var(--sans); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(250,249,247,.4); }
+    .footer-col-head { font-family: var(--sans); font-size: .625rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(250,249,247,.4); margin-bottom: 1.25rem; }
+    .footer-links { display: flex; flex-direction: column; gap: .625rem; }
+    .footer-links a { font-size: .8125rem; color: rgba(250,249,247,.6); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--bone); }
+    .footer-contact-email { font-size: .8125rem; color: rgba(250,249,247,.6); display: block; margin-bottom: 1.25rem; }
+    .footer-contact-email:hover { color: var(--bone); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding: 1.5rem 0; }
+    .footer-bottom-inner { display: flex; flex-direction: column; gap: .5rem; }
+    .footer-disclaimer { font-size: .75rem; color: rgba(250,249,247,.35); line-height: 1.6; max-width: 700px; }
+    .footer-copy { font-size: .75rem; color: rgba(250,249,247,.25); }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+
+    /* ─── DIVIDER ORNAMENT ──────────────────────────────────── */
+    .section-ref { font-family: var(--sans); font-size: .625rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(0,0,0,.2); margin-bottom: 1.5rem; }
+
+    /* ─── STAGGER FADE-IN ON LOAD ───────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ─── ARROW SYMBOL ──────────────────────────────────────── */
+    .arrow { display: inline-block; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  NAVIGATION                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<header id="site-nav" role="banner">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Unbundled Finch — Home">
+        <!-- Finch mark SVG (small nav version) -->
+        <svg class="nav-logo-mark" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 30 C10 30 8 26 9 22 C10 17 15 16 18 18 C21 20 20 25 17 27 C14 29 10 30 10 30Z" fill="#0A0A0A"/>
+          <circle cx="20" cy="19" r="1.5" fill="#0A0A0A"/>
+          <path d="M8 26 L4 28" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 18 C22 16 25 17 23 20" stroke="#0A0A0A" stroke-width="1" stroke-linecap="round"/>
+          <!-- thread to nest -->
+          <path d="M18 22 C24 18 30 28 26 32 C22 36 30 38 34 34 C38 30 32 24 36 22 C40 20 38 28 42 26" stroke="#0A0A0A" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <!-- line to right -->
+          <line x1="42" y1="26" x2="78" y2="26" stroke="#0A0A0A" stroke-width="1" stroke-linecap="round"/>
+          <circle cx="78" cy="26" r="1.5" fill="#0A0A0A"/>
+        </svg>
+        <span class="nav-wordmark">Unbundled Finch</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-portal">Client Portal →</a>
+      </div>
+
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+  <button class="mobile-menu-close" aria-label="Close menu" id="mobile-close">✕</button>
+  <nav aria-label="Mobile navigation">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#process" class="mobile-link">Process</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#faq" class="mobile-link">FAQ</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </nav>
+  <a href="#contact" class="btn btn-portal mobile-link">Access Client Portal →</a>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  HERO                                                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<main id="main">
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-text fade-in">
+        <div class="hero-eyebrow">
+          <span class="eyebrow">DOC. REF. — UF-001</span>
+        </div>
+        <h1 class="hero-headline display">We unbundle the complexity of legal documents.</h1>
+        <p class="hero-sub">Precision processing. Organized structure. Court-ready results.</p>
+        <p class="hero-body">Court-ready document organization and processing for legal professionals, agencies, and individuals.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Request Services →</a>
+          <a href="#contact" class="btn btn-ghost">Client Portal →</a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-in" style="animation-delay:.15s">
+        <!-- Large Finch Mark -->
+        <svg class="finch-mark-large" viewBox="0 0 440 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Unbundled Finch mark — a finch pulling complexity into clarity" role="img">
+          <!-- bird body -->
+          <path d="M55 185 C55 185 42 162 44 140 C47 110 70 102 82 110 C94 118 90 148 78 158 C66 168 55 185 55 185Z" fill="#0A0A0A"/>
+          <!-- bird head -->
+          <circle cx="88" cy="106" r="12" fill="#0A0A0A"/>
+          <!-- eye -->
+          <circle cx="93" cy="102" r="3.5" fill="#FAF9F7"/>
+          <circle cx="94" cy="101" r="1.5" fill="#0A0A0A"/>
+          <!-- beak -->
+          <path d="M97 106 L110 103 L97 110 Z" fill="#0A0A0A"/>
+          <!-- wing detail -->
+          <path d="M60 155 C70 148 84 150 82 158" stroke="#FAF9F7" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".3"/>
+          <!-- tail -->
+          <path d="M46 175 L34 180 M46 178 L32 186 M46 181 L36 192" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round"/>
+          <!-- foot/leg -->
+          <path d="M64 182 L60 195 M60 195 L54 200 M60 195 L66 200" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+
+          <!-- thread / nest — complex tangle, then resolution -->
+          <path d="M95 110
+            C105 98 118 108 112 118
+            C106 128 116 135 124 128
+            C132 121 128 108 138 105
+            C148 102 152 115 144 122
+            C136 129 142 140 152 138
+            C162 136 158 122 168 118
+            C178 114 180 128 172 135
+            C164 142 170 155 180 152
+            C190 149 186 134 196 132
+            C206 130 208 144 200 150
+            C192 156 196 168 206 165
+            C216 162 212 148 224 148
+            C236 148 236 162 228 168
+            C220 174 222 186 232 185
+            C242 184 240 170 252 170"
+            stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+          <!-- clean line resolution -->
+          <line x1="252" y1="170" x2="430" y2="170" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- terminal dot -->
+          <circle cx="430" cy="170" r="4" fill="#0A0A0A"/>
+
+          <!-- subtle grid reference lines -->
+          <line x1="0" y1="300" x2="440" y2="300" stroke="#0A0A0A" stroke-width=".5" opacity=".08"/>
+          <line x1="0" y1="60" x2="440" y2="60" stroke="#0A0A0A" stroke-width=".5" opacity=".08"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  TRUST BAR                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="trust-bar" aria-label="Our commitments">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="trust-label">Confidential &amp; Secure</div>
+          <div class="trust-desc">Your information is always protected.</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div>
+          <div class="trust-label">Precision &amp; Accuracy</div>
+          <div class="trust-desc">Every detail reviewed. Every time.</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="trust-label">Reliable Turnaround</div>
+          <div class="trust-desc">Timelines we commit to. Timelines we meet.</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <div class="trust-label">Court-Ready Quality</div>
+          <div class="trust-desc">Organized. Formatted. Ready to file.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  SERVICES                                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="section-header fade-in">
+      <span class="eyebrow">TAB. I — Services</span>
+      <h2 style="margin-top:1.25rem">What we prepare.</h2>
+      <p class="section-intro">Unbundled Finch handles the document infrastructure so you can focus on the work that requires your legal expertise. Select only the services you need.</p>
+    </div>
+
+    <div class="services-grid fade-in">
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 01</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="svc-name">Table of Authorities</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">Precise compilation and formatting of all legal citations within a brief, motion, or appellate document. Cases, statutes, regulations, and secondary authorities organized to jurisdiction-specific court standards.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 02</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="12" y1="11" x2="12" y2="17"/></svg>
+        </div>
+        <div class="svc-name">eBinder Assembly</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">Complete digital case binders assembled and organized for litigation, arbitration, or appellate proceedings. Documents indexed, tabbed, and structured for immediate reference and navigation.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 03</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div class="svc-name">Exhibit Hyperlinking</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">PDF exhibits linked, cross-referenced, and made navigable for electronic filing and review. Internal hyperlinks embedded so attorneys and reviewers can move through documents efficiently without manual page-searching.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 04</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+        </div>
+        <div class="svc-name">Pleading Formatting</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">Pleadings formatted to meet court-specific requirements: caption, margins, line spacing, numbering, pagination, and signature block. Jurisdictional compliance reviewed before delivery.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 05</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="svc-name">Document Processing</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">General-purpose processing for legal documents requiring clean formatting, structural organization, or format conversion. Intake-to-delivery workflow managed through the client portal with a reference number assigned at submission.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 06</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+        </div>
+        <div class="svc-name">Record Extraction</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">Organized extraction and compilation of records from medical, administrative, or legal file sets. Documents identified, indexed, and compiled into a structured reference format ready for legal review or submission.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 07</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 12l2-2 4 4"/><path d="M8 18h1"/><path d="M15 18h1"/></svg>
+        </div>
+        <div class="svc-name">PDF Remediation</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">Scanned, flattened, or unstructured PDFs corrected and optimized: text recognition, layer cleanup, accessibility formatting, and e-filing preparation. Delivered as a clean, compliant document file.</p>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-ref">SVC. 08</span>
+        <div class="svc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>
+        </div>
+        <div class="svc-name">Quality Control</div>
+        <hr class="svc-divider">
+        <p class="svc-desc">Final-stage review of processed documents before filing or submission. Formatting verification, citation accuracy, index review, and structural check against court or client specifications before release.</p>
+      </div>
+
+    </div>
+
+    <div class="services-footer fade-in">
+      <a href="#contact" class="services-link">View all services and request details →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  WHO WE SERVE                                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="clients" class="section section-alt">
+  <div class="wrap">
+    <div class="clients-inner">
+      <div class="fade-in">
+        <span class="eyebrow">FIELD. II — Clients</span>
+        <h2 style="margin-top:1.25rem;margin-bottom:1rem">Built for legal professionals.</h2>
+        <p style="color:var(--slate-mid);margin-bottom:1rem">We work with attorneys, solo practitioners, paralegals, legal support agencies, and individuals managing their own legal documents. If your work depends on precise, court-ready documents, Unbundled Finch is built for you.</p>
+        <p style="color:var(--slate-mid)">Our services are available on a project-by-project basis. You engage only the specific help you need, when you need it — nothing more, nothing less.</p>
+        <div class="clients-tags">
+          <span class="client-tag">Solo Attorneys</span>
+          <span class="client-tag">Law Firms</span>
+          <span class="client-tag">Paralegals</span>
+          <span class="client-tag">Legal Agencies</span>
+          <span class="client-tag">Pro Se Individuals</span>
+          <span class="client-tag">Litigation Support Teams</span>
+        </div>
+      </div>
+      <div class="fade-in" style="animation-delay:.12s">
+        <div class="clients-statement">
+          <blockquote>"Order is the path to insight."</blockquote>
+          <p>Unbundled Finch transforms complex legal files into precise, organized, court-ready structure. The nest is complexity. The thread is process. The finished product is structure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  PROCESS                                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="process" class="section">
+  <div class="wrap">
+    <div class="section-header fade-in">
+      <span class="eyebrow">TAB. III — Process</span>
+      <h2 style="margin-top:1.25rem">How it works.</h2>
+      <p class="section-intro">A structured intake-to-delivery workflow built for legal professionals. Every project assigned a reference number. Every document reviewed before delivery.</p>
+    </div>
+
+    <div class="process-grid fade-in">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Submit Your Request</div>
+        <p class="step-desc">Use the client portal to submit your project details, document type, jurisdiction, and turnaround requirements. First-time clients can submit a general inquiry directly through the contact form. Every project receives a reference number at intake.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Secure Document Upload</div>
+        <p class="step-desc">Upload your files through the encrypted client portal. Documents are received, logged, and confirmed. Your files are handled with professional discretion at every stage and never shared with third parties.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Processing and Review</div>
+        <p class="step-desc">Your documents are processed according to your specifications. Before delivery, every file is reviewed against formatting standards, court requirements, and client instructions. We do not release work that has not been checked.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Structured Delivery</div>
+        <p class="step-desc">Completed documents are delivered through the portal in the format you specified — organized, formatted, and ready for filing, submission, or distribution. Reference documentation included.</p>
+      </div>
+    </div>
+
+    <div class="process-link fade-in">
+      <a href="#faq">Have questions before you begin? View FAQ →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  STANDARDS / QA                                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="standards" class="section section-dark">
+  <div class="wrap">
+    <div class="standards-inner">
+      <div class="standards-body fade-in">
+        <span class="eyebrow" style="color:rgba(250,249,247,.4)">TAB. IV — Standards</span>
+        <h2 style="margin-top:1.25rem">Every document reviewed. Every time.</h2>
+        <p>Unbundled Finch operates on a quality-first framework. Every document we process is reviewed against three checkpoints before delivery: formatting compliance, structural accuracy, and client specification. We do not release work that has not been checked.</p>
+        <p>Your documents are handled with the same level of discretion you would expect from any professional services provider. Files are received, processed, and delivered through an encrypted workflow. We do not share, distribute, or retain client files beyond the scope of the engagement.</p>
+      </div>
+      <div class="fade-in" style="animation-delay:.12s">
+        <div class="standards-cards">
+          <div class="std-card">
+            <div class="std-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="std-label">Confidential &amp; Secure</div>
+            <p class="std-desc">Encrypted intake and delivery. No third-party sharing at any stage of the workflow.</p>
+          </div>
+          <div class="std-card">
+            <div class="std-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="std-label">Precision &amp; Accuracy</div>
+            <p class="std-desc">Formatting verified. Citations and indexes checked before release. Every time.</p>
+          </div>
+          <div class="std-card">
+            <div class="std-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="std-label">Reliable Turnaround</div>
+            <p class="std-desc">Timelines established at intake. We communicate clearly if requirements change.</p>
+          </div>
+          <div class="std-card">
+            <div class="std-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="std-label">Court-Ready Quality</div>
+            <p class="std-desc">Organized for review. Formatted to filing standards. Delivered ready to submit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  ABOUT TEASER                                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="about" class="section section-alt">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="fade-in">
+        <span class="eyebrow">REF. — About</span>
+        <h2 style="margin-top:1.25rem;margin-bottom:1.5rem">Built on structure. Defined by precision.</h2>
+        <div class="about-body">
+          <p>Unbundled Finch is a specialized legal document processing service. We handle the document infrastructure that legal work depends on — precisely, efficiently, and without the overhead of a full-service firm.</p>
+          <p>The name reflects the model. Unbundled legal services allow clients to engage only the specific help they need, when they need it. Unbundled Finch applies that same logic to document processing: you request exactly the service required, and we deliver exactly that.</p>
+          <p>We do not provide legal advice, legal representation, or attorney services of any kind. We provide the organized, formatted, court-ready document infrastructure that makes legal work possible.</p>
+        </div>
+        <a href="#contact" class="about-link">Learn more about Unbundled Finch →</a>
+      </div>
+      <div class="about-principles fade-in" style="animation-delay:.12s">
+        <div class="principle-item">
+          <span class="principle-name">Precision</span>
+          <span class="principle-desc">Every detail matters. We get it right.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-name">Structure</span>
+          <span class="principle-desc">We bring order to complexity.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-name">Clarity</span>
+          <span class="principle-desc">Clear information. Better decisions.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-name">Confidentiality</span>
+          <span class="principle-desc">Your data. Your case. Always protected.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-name">Reliability</span>
+          <span class="principle-desc">On time. Every time. Without exception.</span>
+        </div>
+        <div class="principle-item">
+          <span class="principle-name">Court-Ready</span>
+          <span class="principle-desc">Organized, formatted, and ready to file.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  CTA BAND                                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="cta-band">
+  <div class="wrap">
+    <p class="cta-band-headline fade-in">Ready to submit your documents?</p>
+    <p class="cta-band-body fade-in">Access the client portal or send us a direct request. Turnaround timelines provided with every inquiry.</p>
+    <div class="cta-band-ctas fade-in">
+      <a href="#contact" class="btn btn-white">Request Services →</a>
+      <a href="#contact" class="btn btn-portal-outline">Client Portal →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  FAQ                                                      -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="faq" class="section">
+  <div class="wrap">
+    <div class="section-header fade-in">
+      <span class="eyebrow">FIELD. V — FAQ</span>
+      <h2 style="margin-top:1.25rem">Questions before you begin.</h2>
+      <p class="section-intro">Common questions about our services, process, and scope.</p>
+    </div>
+
+    <div class="faq-list fade-in" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          What is Unbundled Finch?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Unbundled Finch is a legal document processing service. We prepare, format, organize, and deliver court-ready legal documents for attorneys, paralegals, legal agencies, and individuals. We do not provide legal advice or legal representation.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Do you provide legal advice?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>No. Unbundled Finch is a document processing service, not a law firm. We do not provide legal advice, legal counsel, legal representation, or any attorney services. If you require legal guidance, please consult a licensed attorney.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Who do you work with?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>We work with solo attorneys, small and mid-size law firms, paralegals, legal support agencies, and individuals managing their own legal documents. Our services are available to any client who needs precise, organized, court-ready document preparation.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          How do I submit a request?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>You can submit a request through the client portal or by using the contact form on this site. We will review your requirements, confirm scope and turnaround, and assign a reference number to your project.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          How are my documents kept secure?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Documents are received and delivered through an encrypted workflow. We handle client files with professional discretion and do not share, distribute, or retain files beyond the scope of the engagement.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          What file formats do you accept?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>We accept PDF, Word (.docx), and other standard document formats. If your files are in a different format, contact us before submitting and we will advise on the best approach.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Do you handle rush or expedited requests?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>We accommodate expedited requests based on availability. Note your deadline and turnaround requirements in your initial inquiry and we will advise on feasibility and scheduling.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Is there a minimum project size?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>No. We handle single-document requests and multi-file projects. You pay only for the specific services you need.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          How do I receive completed documents?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Completed documents are delivered through the client portal in your specified format — organized, formatted, and ready for filing or submission.</p></div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Do you work on an hourly, flat-fee, or per-document basis?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Pricing varies by service and project scope. Contact us with your project details for a specific estimate. There are no hidden fees.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  CONTACT                                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="contact" class="section section-alt">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="fade-in">
+        <span class="eyebrow">REF. — Contact</span>
+        <h2 style="margin-top:1.25rem">Request services or submit an inquiry.</h2>
+        <p style="margin-top:1rem">All document requests are handled through the client portal. If this is your first time working with Unbundled Finch, or if you have questions before submitting, use the form. We respond within one business day.</p>
+        <a href="mailto:info@unbundledfinch.com" class="contact-email" style="display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@unbundledfinch.com
+        </a>
+        <div class="contact-portal">
+          <p>Returning client? Access your project directly.</p>
+          <a href="#" class="btn btn-portal">Access Client Portal →</a>
+        </div>
+      </div>
+
+      <div class="fade-in" style="animation-delay:.12s">
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="org">Organization / Firm Name</label>
+            <input type="text" id="org" name="org" autocomplete="organization" placeholder="Optional">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@firm.com">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Requested</label>
+            <select id="service" name="service">
+              <option value="">Select a service…</option>
+              <option>Table of Authorities</option>
+              <option>eBinder Assembly</option>
+              <option>Exhibit Hyperlinking</option>
+              <option>Pleading Formatting</option>
+              <option>Document Processing</option>
+              <option>Record Extraction</option>
+              <option>PDF Remediation</option>
+              <option>Quality Control</option>
+              <option>Not Sure — General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Project Description / Notes <span aria-hidden="true">*</span></label>
+            <textarea id="notes" name="notes" required placeholder="Describe your document requirements, jurisdiction, and any relevant details…"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="deadline">Deadline or Turnaround Required</label>
+            <input type="text" id="deadline" name="deadline" placeholder="e.g. 3 business days, by June 15">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Submit Request →</button>
+          <p class="form-disclaimer">Submitting this form does not create an attorney-client relationship. Unbundled Finch provides document processing services only.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  FOOTER                                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <!-- Small finch mark in footer -->
+        <svg class="footer-logo-mark" width="40" height="28" viewBox="0 0 80 48" fill="none" aria-hidden="true">
+          <path d="M10 30 C10 30 8 26 9 22 C10 17 15 16 18 18 C21 20 20 25 17 27 C14 29 10 30 10 30Z" fill="rgba(250,249,247,0.4)"/>
+          <circle cx="20" cy="19" r="1.5" fill="rgba(250,249,247,0.4)"/>
+          <path d="M8 26 L4 28" stroke="rgba(250,249,247,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 22 C24 18 30 28 26 32 C22 36 30 38 34 34 C38 30 32 24 36 22 C40 20 38 28 42 26" stroke="rgba(250,249,247,0.4)" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <line x1="42" y1="26" x2="78" y2="26" stroke="rgba(250,249,247,0.4)" stroke-width="1" stroke-linecap="round"/>
+          <circle cx="78" cy="26" r="1.5" fill="rgba(250,249,247,0.4)"/>
+        </svg>
+        <div class="footer-wordmark">Unbundled Finch</div>
+        <div class="footer-tagline">Extract. Organize. Deliver.</div>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Table of Authorities</a></li>
+          <li><a href="#services">eBinder Assembly</a></li>
+          <li><a href="#services">Exhibit Hyperlinking</a></li>
+          <li><a href="#services">Pleading Formatting</a></li>
+          <li><a href="#services">Document Processing</a></li>
+          <li><a href="#services">Record Extraction</a></li>
+          <li><a href="#services">PDF Remediation</a></li>
+          <li><a href="#services">Quality Control</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Client Portal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Contact</div>
+        <a href="mailto:info@unbundledfinch.com" class="footer-contact-email">info@unbundledfinch.com</a>
+        <a href="#contact" class="btn btn-portal" style="font-size:.625rem;padding:.625rem 1rem">Client Portal →</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-disclaimer">Unbundled Finch provides document processing and legal support services only. We do not provide legal advice, legal representation, or attorney-client services of any kind.</p>
+        <p class="footer-copy">© 2026 Unbundled Finch. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  JAVASCRIPT                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+  // ── Mobile nav ─────────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileClose = document.getElementById('mobile-close');
+  const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    mobileClose.focus();
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    hamburger.focus();
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu(); });
+
+  // ── FAQ accordion ────────────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      // close all
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      // open clicked (if was closed)
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling.classList.add('open');
+      }
+    });
+  });
+
+  // ── Scroll fade-in ───────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Contact form ─────────────────────────────────────────────
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('[type="submit"]');
+    btn.textContent = 'Request Submitted ✓';
+    btn.style.background = 'var(--field-grn)';
+    btn.disabled = true;
+  });
+</script>
+</body>
+</html>
