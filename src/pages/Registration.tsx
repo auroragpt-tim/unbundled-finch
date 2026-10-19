@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 
-const FORM_ENDPOINT = "https://formspree.io/f/meeeqkyp";
+const FORM_ENDPOINT = "https://formspree.io/f/moejzwne";
 
 export default function Registration() {
   const [sending, setSending] = useState(false);
