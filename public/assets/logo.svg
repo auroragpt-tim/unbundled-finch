@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" width="400" height="60">
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="bold" font-size="32" fill="#000000" letter-spacing="-1">Unbundled Finch</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 150" role="img" aria-label="Unbundled Finch">
+<g transform="translate(4 9) scale(.39)"><path d="M33,49 70,63 82,80 87,97 83,134 86,162 95,188 106,207 139,240 161,252 183,260 152,299 130,300 123,305 24,309 121,311 122,313 124,311 135,311 136,315 142,311 169,311 169,316 176,311 184,311 184,318 194,311 334,309 232,305 227,302 212,301 237,261 260,256 279,248 298,253 319,253 391,303 410,300 424,289 344,239 265,223 213,208 187,196 159,173 145,152 144,145 147,142 161,163 177,179 202,194 253,211 343,232 353,232 234,115 199,89 175,39 160,22 149,16 131,12 108,14 90,22 72,41Z M222,264 210,287 199,302 183,303 178,300 164,299 195,262Z M205,189 224,184 249,168 297,197 248,173 235,184 294,204 319,216 279,207 224,188 214,191 206,191Z M114,38 122,39 128,46 127,55 119,61 111,59 105,51 108,42Z" fill="#111111" fill-rule="evenodd"/></g>
+<g fill="#111111" font-family="Arial,Helvetica,sans-serif" font-weight="400">
+<text x="190" y="72" font-size="54" letter-spacing="8">UNBUNDLED</text>
+<text x="191" y="135" font-size="53" letter-spacing="14">FINCH</text>
+</g>
 </svg>

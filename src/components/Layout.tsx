@@ -1,119 +1,69 @@
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { cn } from "@/lib/utils";
+
+const navItems = [
+  { href: "/services", label: "Services" },
+  { href: "/process", label: "Process" },
+  { href: "/about", label: "About" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
-
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/process", label: "Process" },
-    { href: "/pricing", label: "Pricing" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ];
-
+  const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-black selection:text-white">
-      {/* Top Navigation Bar - Fixed Height, Border Bottom */}
-      <header className="fixed top-0 left-0 right-0 z-50 h-16 border-b border-border bg-background/95 backdrop-blur-sm">
-        <div className="container h-full flex items-center justify-between">
-          {/* Logo Area */}
-          <Link href="/">
-            <div className="flex items-center gap-3 cursor-pointer group">
-              <img 
-                src="/assets/logo.svg" 
-                alt="Unbundled Finch" 
-                className="h-8 w-auto group-hover:opacity-80 transition-opacity" 
-              />
-            </div>
+    <div className="uf-public">
+      <header className="uf-header">
+        <div className="uf-shell uf-header-inner">
+          <Link href="/" className="uf-brand" onClick={() => setMobileOpen(false)}>
+            <img src="/assets/logo.svg" alt="Unbundled Finch — Home" />
           </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <button
+            className="uf-menu-toggle"
+            type="button"
+            aria-expanded={mobileOpen}
+            aria-controls="uf-primary-nav"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? "Close" : "Menu"} <span aria-hidden="true">{mobileOpen ? "×" : "☰"}</span>
+          </button>
+          <nav id="uf-primary-nav" className={"uf-nav" + (mobileOpen ? " uf-nav-open" : "")} aria-label="Main navigation">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <span 
-                  className={cn(
-                    "text-sm font-medium uppercase tracking-wider hover:text-primary transition-colors cursor-pointer",
-                    location === item.href ? "text-primary border-b-2 border-primary pb-1" : "text-muted-foreground"
-                  )}
-                >
-                  {item.label}
-                </span>
-              </Link>
+              <Link key={item.href} href={item.href}
+                className={"uf-nav-link" + (location === item.href ? " uf-nav-active" : "")}
+                onClick={() => setMobileOpen(false)}>{item.label}</Link>
             ))}
-            
-            {/* Portal Login Button */}
-            <div className="ml-4 pl-4 border-l border-border">
-              <Link href="/portal">
-                <span className="text-sm font-bold uppercase tracking-wider bg-primary text-primary-foreground px-4 py-2 hover:bg-primary/90 transition-colors cursor-pointer">
-                  Client Portal
-                </span>
-              </Link>
-            </div>
+            <Link href="/portal" className="uf-portal-link" onClick={() => setMobileOpen(false)}>Client portal <span aria-hidden="true">↗</span></Link>
           </nav>
-
-          {/* Mobile Menu Toggle (Placeholder) */}
-          <div className="md:hidden">
-            <Link href="/portal">
-              <span className="text-xs font-bold uppercase border border-primary px-2 py-1">
-                Portal
-              </span>
-            </Link>
-          </div>
         </div>
       </header>
-
-      {/* Main Content Area - Pt-16 to offset fixed header */}
-      <main className="pt-16 min-h-[calc(100vh-4rem)]">
-        {children}
-      </main>
-
-      {/* Footer - Swiss Grid Style */}
-      <footer className="border-t border-border bg-secondary/30 py-12">
-        <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1">
-            <img src="/assets/logo.svg" alt="Unbundled Finch" className="h-6 w-auto mb-4 opacity-80" />
-            <p className="text-sm text-muted-foreground">
-              Legal document processing services.<br/>
-              Precise. Neutral. Efficient.
-            </p>
+      <main id="main-content">{children}</main>
+      <footer className="uf-footer">
+        <div className="uf-shell uf-footer-main">
+          <div className="uf-footer-brand">
+            <img src="/assets/logo.svg" alt="Unbundled Finch" />
+            <p>Extract. Organize. Deliver.</p>
+            <p>Technical document production and litigation support.</p>
           </div>
-          
-          <div className="col-span-1">
-            <h4 className="font-bold uppercase tracking-widest text-xs mb-4">Sitemap</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              {navItems.map(item => (
-                <li key={item.href}><Link href={item.href}><span className="hover:text-primary cursor-pointer">{item.label}</span></Link></li>
-              ))}
-            </ul>
+          <div>
+            <span className="uf-eyebrow">Explore</span>
+            <Link href="/services">Services</Link>
+            <Link href="/process">Our process</Link>
+            <Link href="/about">Our approach</Link>
+            <Link href="/pricing">Project pricing</Link>
           </div>
-
-          <div className="col-span-1">
-            <h4 className="font-bold uppercase tracking-widest text-xs mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><span className="cursor-pointer hover:text-primary">Privacy Policy</span></li>
-              <li><span className="cursor-pointer hover:text-primary">Terms of Service</span></li>
-              <li><span className="cursor-pointer hover:text-primary">Disclaimer</span></li>
-            </ul>
-          </div>
-
-          <div className="col-span-1">
-            <h4 className="font-bold uppercase tracking-widest text-xs mb-4">Contact</h4>
-            <p className="text-sm text-muted-foreground mb-2">
-              Vanguard@unbundledfinch.com
-            </p>
-
+          <div>
+            <span className="uf-eyebrow">Information</span>
+            <Link href="/contact">Contact</Link>
+            <Link href="/privacy">Privacy policy</Link>
+            <Link href="/terms">Terms of service</Link>
+            <Link href="/portal">Client portal</Link>
           </div>
         </div>
-        <div className="container mt-12 pt-8 border-t border-border/50 flex justify-between items-center text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Unbundled Finch. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
-          </div>
-          <p>Swiss Design System</p>
+        <div className="uf-shell uf-footer-bottom">
+          <span>© {new Date().getFullYear()} Unbundled Finch</span>
+          <span>Technical services only. No legal advice or representation.</span>
         </div>
       </footer>
     </div>

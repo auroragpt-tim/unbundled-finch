@@ -1,88 +1,28 @@
-import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
-export default function Process() {
-  return (
-    <div className="flex flex-col">
-      <section className="bg-secondary/30 py-20 border-b border-border">
-        <div className="container">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">PROCESS</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl font-light">
-            A transparent, secure workflow designed for reliability.
-          </p>
-        </div>
-      </section>
-
-      <section className="container py-20">
-        <div className="max-w-4xl mx-auto space-y-24">
-          
-          {/* Step 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-2">
-              <span className="text-6xl font-bold text-border">01</span>
-            </div>
-            <div className="md:col-span-10 pt-4">
-              <h3 className="text-2xl font-bold uppercase mb-4">Account Creation</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Register for a secure account on our Client Portal. We verify all accounts to ensure the integrity of our platform. Once approved, you will gain access to the dashboard.
-              </p>
-
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-2">
-              <span className="text-6xl font-bold text-border">02</span>
-            </div>
-            <div className="md:col-span-10 pt-4">
-              <h3 className="text-2xl font-bold uppercase mb-4">Submit Request</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Use the "New Request" form in the portal to describe your needs. Select the service type, provide instructions, and set your deadline.
-              </p>
-            </div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-2">
-              <span className="text-6xl font-bold text-border">03</span>
-            </div>
-            <div className="md:col-span-10 pt-4">
-              <h3 className="text-2xl font-bold uppercase mb-4">Secure Upload</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Upload your source documents via our encrypted transfer system. We support PDF, Word, and Excel formats.
-              </p>
-
-            </div>
-          </div>
-
-          {/* Step 4 */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-2">
-              <span className="text-6xl font-bold text-border">04</span>
-            </div>
-            <div className="md:col-span-10 pt-4">
-              <h3 className="text-2xl font-bold uppercase mb-4">Processing & Delivery</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Our team processes your documents according to your specifications. You will receive a notification when the work is complete. Final files are available for download directly from the portal.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <section className="py-20 border-t border-border bg-secondary/10">
-        <div className="container text-center">
-          <h2 className="text-3xl font-bold uppercase mb-8">Ready to start?</h2>
-          <Link href="/portal">
-            <Button size="lg" className="rounded-none px-12 h-14 uppercase font-bold tracking-wider">
-              Go to Portal
-            </Button>
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+const steps=[
+  {n:"01",name:"Define the production task",detail:"Tell us which technical outputs you need, which files are involved, and any applicable client-specified formatting or navigation requirements."},
+  {n:"02",name:"Supply finalized source material",detail:"Provide the intended content and confirm the source text, exhibits, sequence, names, dates, and citations are acceptable for technical processing."},
+  {n:"03",name:"Build, then check",detail:"We perform the authorized technical tasks and check items such as document order, bookmarks, internal links, page labels, and file functionality."},
+  {n:"04",name:"Review and direct revisions",detail:"You review the deliverables. If content or production choices need adjustment, you provide exact instructions. We correct our own production errors without charge."}
+];
+export default function Process(){
+  return <div className="uf-site">
+    <section className="uf-page-intro"><div className="uf-shell">
+      <p className="uf-eyebrow">02 / Process</p><h1>Careful work.<br/><em>Clear boundaries.</em></h1>
+      <p className="uf-lede">An organized production workflow that protects original authorship and keeps editorial or legal decisions with the client.</p>
+    </div></section>
+    <section className="uf-section"><div className="uf-shell">
+      <div className="uf-process-steps">{steps.map(s=><article className="uf-process-step" key={s.n}>
+        <span className="uf-step-number">{s.n}</span><h2>{s.name}</h2><p>{s.detail}</p>
+      </article>)}</div>
+    </div></section>
+    <section className="uf-statement"><div className="uf-shell uf-statement-grid">
+      <p className="uf-eyebrow">Preserve &amp; escalate</p>
+      <div><h2>When in doubt,<br/><em>we ask.</em></h2>
+      <p>If something is incomplete, inconsistent, unreadable, or ambiguous, we may pause the affected work and seek your direction rather than guess or make a substantive edit.</p>
+      <p>Standard projects include two complimentary client-directed production revision rounds. Corrections of our own production errors do not use those rounds. Material scope changes may require a revised quote.</p>
+      <Link href="/contact" className="uf-text-link">Discuss your workflow <span aria-hidden="true">→</span></Link></div>
+    </div></section>
+  </div>;
 }
