@@ -56,6 +56,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div>
             <span className="uf-eyebrow">Information</span>
             <Link href="/contact">Contact</Link>
+            <a href="mailto:atticus@unbundledfinch.com">atticus@unbundledfinch.com</a>
             <Link href="/privacy">Privacy policy</Link>
             <Link href="/terms">Terms of service</Link>
             <Link href="/portal">Client portal</Link>

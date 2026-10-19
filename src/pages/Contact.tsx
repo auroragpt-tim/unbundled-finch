@@ -35,7 +35,7 @@ export default function Contact(){
       <aside className="uf-contact-aside"><p className="uf-eyebrow">Get in touch</p>
         <h2>Clarity starts<br/>with a conversation.</h2>
         <p>For technical document projects, questions about scope, or production requirements, reach out through the form or email.</p>
-        <a className="uf-text-link" href="mailto:Vanguard@unbundledfinch.com">Vanguard@unbundledfinch.com <span aria-hidden="true">↗</span></a>
+        <a className="uf-text-link" href="mailto:atticus@unbundledfinch.com">atticus@unbundledfinch.com <span aria-hidden="true">↗</span></a>
         <div className="uf-aside-rule"/><p className="uf-small-note">Unbundled Finch provides technical document production only—not legal advice or representation.</p>
       </aside>
     </div></section>
