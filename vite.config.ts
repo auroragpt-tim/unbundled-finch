@@ -6,6 +6,8 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: {
+    // Prefer maintained TypeScript components over stale generated .js counterparts.
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.mts', '.json'],
     alias: {
       '@': path.resolve(__dirname, './src'),
     },

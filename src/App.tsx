@@ -1,14 +1,10 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
+import { Redirect, Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
-import PortalLayout from "./components/PortalLayout";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { AuthProvider } from "./contexts/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
 
-// Public Pages
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Process from "./pages/Process";
@@ -17,73 +13,36 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Registration from "./pages/Registration";
 import NotFound from "./pages/NotFound";
 
-// Portal Pages
-import Login from "./pages/portal/Login";
-import Dashboard from "./pages/portal/Dashboard";
-import NewRequest from "./pages/portal/NewRequest";
-import Documents from "./pages/portal/Documents";
-import Messages from "./pages/portal/Messages";
-import Billing from "./pages/portal/Billing";
-import Settings from "./pages/portal/Settings";
+// The previous client portal was a prototype. Registration now collects
+// inquiries only; no customer accounts, files, or billing are exposed.
+const legacyPortalPaths = [
+  "/portal/dashboard",
+  "/portal/new-request",
+  "/portal/documents",
+  "/portal/messages",
+  "/portal/billing",
+  "/portal/settings",
+];
 
 function Router() {
   return (
     <Switch>
-      {/* Public Routes */}
-      <Route path="/">
-        <Layout><Home /></Layout>
-      </Route>
-      <Route path="/services">
-        <Layout><Services /></Layout>
-      </Route>
-      <Route path="/process">
-        <Layout><Process /></Layout>
-      </Route>
-      <Route path="/pricing">
-        <Layout><Pricing /></Layout>
-      </Route>
-      <Route path="/about">
-        <Layout><About /></Layout>
-      </Route>
-      <Route path="/contact">
-        <Layout><Contact /></Layout>
-      </Route>
-      <Route path="/privacy">
-        <Layout><Privacy /></Layout>
-      </Route>
-      <Route path="/terms">
-        <Layout><Terms /></Layout>
-      </Route>
-
-      {/* Portal Routes */}
-      <Route path="/portal">
-        <Login />
-      </Route>
-      <Route path="/portal/dashboard">
-        <ProtectedRoute><PortalLayout><Dashboard /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/new-request">
-        <ProtectedRoute><PortalLayout><NewRequest /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/documents">
-        <ProtectedRoute><PortalLayout><Documents /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/messages">
-        <ProtectedRoute><PortalLayout><Messages /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/billing">
-        <ProtectedRoute><PortalLayout><Billing /></PortalLayout></ProtectedRoute>
-      </Route>
-      <Route path="/portal/settings">
-        <ProtectedRoute><PortalLayout><Settings /></PortalLayout></ProtectedRoute>
-      </Route>
-
-      {/* 404 */}
-      <Route>
-        <Layout><NotFound /></Layout>
-      </Route>
+      <Route path="/"><Layout><Home /></Layout></Route>
+      <Route path="/services"><Layout><Services /></Layout></Route>
+      <Route path="/process"><Layout><Process /></Layout></Route>
+      <Route path="/pricing"><Layout><Pricing /></Layout></Route>
+      <Route path="/about"><Layout><About /></Layout></Route>
+      <Route path="/contact"><Layout><Contact /></Layout></Route>
+      <Route path="/privacy"><Layout><Privacy /></Layout></Route>
+      <Route path="/terms"><Layout><Terms /></Layout></Route>
+      <Route path="/portal"><Layout><Registration /></Layout></Route>
+      {legacyPortalPaths.map((path) => (
+        <Route key={path} path={path}><Redirect to="/portal" replace /></Route>
+      ))}
+      <Route><Layout><NotFound /></Layout></Route>
     </Switch>
   );
 }
@@ -91,14 +50,12 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <ThemeProvider defaultTheme="light">
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
-        </ThemeProvider>
-      </AuthProvider>
+      <ThemeProvider defaultTheme="light">
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

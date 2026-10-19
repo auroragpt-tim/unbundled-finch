@@ -204,3 +204,15 @@ body { background:#faf8f2; color:#111111; }
 
 /* Consistent styling for the Extract. Organize. Deliver. tagline */
 .uf-footer-brand .uf-footer-motto{color:#111;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:10px;}
+
+/* Prospective-client registration */
+.uf-form select{width:100%;border:1px solid #aca79f;background:#faf8f2;color:#111;border-radius:0;min-width:0;padding:15px;font:inherit;font-size:16px;appearance:auto;}
+.uf-form select:focus{outline:2px solid #222;outline-offset:2px;}
+.uf-register-consent{display:flex!important;align-items:flex-start;gap:12px;letter-spacing:0!important;text-transform:none!important;font-size:14px!important;line-height:1.6;margin:28px 0 0!important;cursor:pointer;}
+.uf-register-consent input{flex:none;width:18px;height:18px;margin:2px 0 0;padding:0;accent-color:#111;}
+.uf-form .uf-small-note a{color:#111;text-decoration:underline;text-underline-offset:3px;}
+.uf-register-error{padding:15px;border:1px solid #a44949;color:#7c2121;line-height:1.6;margin-top:20px;}
+.uf-registration-confirmation{border-top:1px solid #aaa59d;margin-top:26px;padding:35px 0;}
+.uf-registration-confirmation h2{font-size:clamp(29px,3vw,42px);font-weight:400;letter-spacing:-.035em;margin-bottom:20px;}
+.uf-registration-confirmation p{font-size:16px;line-height:1.8;color:#514e49;max-width:650px;margin-bottom:18px;}
+.uf-registration-confirmation .uf-button{margin-top:16px;}
