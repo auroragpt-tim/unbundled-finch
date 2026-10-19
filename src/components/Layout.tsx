@@ -43,7 +43,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="uf-shell uf-footer-main">
           <div className="uf-footer-brand">
             <img src="/assets/logo.svg" alt="Unbundled Finch" />
-            <p>Extract. Organize. Deliver.</p>
+            <p className="uf-footer-motto">Extract. Organize. Deliver.</p>
             <p>Technical document production and litigation support.</p>
           </div>
           <div>

@@ -14,7 +14,7 @@ export default function Services() {
   return <div className="uf-site">
     <section className="uf-page-intro"><div className="uf-shell">
       <p className="uf-eyebrow">01 / Services</p><h1>Legal-document<br/><em>production, unbundled.</em></h1>
-      <p className="uf-lede">Select the technical assistance your project requires. Every engagement starts with your source materials, specifications, and instructions.</p>
+      <p className="uf-lede">Extract. Organize. Deliver. Select the technical assistance your project requires, guided by the source materials, specifications, and instructions you provide.</p>
     </div></section>
     <section className="uf-section"><div className="uf-shell">
       <div className="uf-services-grid">{services.map(s=><article className="uf-service-card" key={s.n}>

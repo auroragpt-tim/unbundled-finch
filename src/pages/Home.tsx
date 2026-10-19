@@ -1,9 +1,9 @@
 import { Link } from "wouter";
 
 const featured = [
-  { index: "01", title: "Precision", text: "Document architecture that follows your supplied requirements, with careful attention to navigation, formatting, and technical details." },
-  { index: "02", title: "Neutrality", text: "Your content remains yours. We preserve client-provided language and ask for direction instead of making substantive changes." },
-  { index: "03", title: "Efficiency", text: "Usable, searchable, organized files designed to help legal readers move through complex records with less friction." }
+  { index: "01", title: "Extract", text: "Gather and prepare the client-provided source materials needed for the technical production task, preserving the original content." },
+  { index: "02", title: "Organize", text: "Give complex records usable structure through sequencing, indexing, bookmarks, page labels, and internal hyperlinks." },
+  { index: "03", title: "Deliver", text: "Check the technical output and provide searchable, navigable, carefully prepared files for client review and intended use." }
 ];
 const services = [
   { name: "Table of Authorities", detail: "Marking, organizing, generating, and updating authorities supplied in a brief." },
@@ -18,13 +18,13 @@ export default function Home() {
         <div className="uf-shell uf-hero-grid">
           <div className="uf-hero-copy">
             <p className="uf-eyebrow uf-hero-eyebrow"><span className="uf-eyebrow-line" /> Legal document production &amp; litigation support</p>
-            <h1>We unbundle the<br/><em>complexity</em> of<br/>legal documents.</h1>
-            <p className="uf-lede">Clearer structure. Better navigation. Carefully prepared documents—without changing the substance of what you wrote.</p>
+            <h1>Extract.<br/>Organize.<br/><em>Deliver.</em></h1>
+            <p className="uf-lede">We unbundle the complexity of legal documents—turning client-provided materials into organized, navigable files without changing their substance.</p>
             <div className="uf-button-row">
               <Link href="/services" className="uf-button uf-button-dark">Explore services <span aria-hidden="true">↗</span></Link>
               <Link href="/contact" className="uf-button">Discuss a project <span aria-hidden="true">→</span></Link>
             </div>
-            <p className="uf-hero-small">Extract. Organize. Deliver.</p>
+            <p className="uf-hero-small">EOD / The Unbundled Finch method</p>
           </div>
           <div className="uf-hero-art" aria-hidden="true">
             <div className="uf-art-index">UF / 01 <span>CLARITY THROUGH STRUCTURE</span></div>
@@ -33,14 +33,14 @@ export default function Home() {
               <span className="uf-art-word">UNBUNDLED<br/>FINCH</span>
             </div>
             <div className="uf-art-line"><span /></div>
-            <div className="uf-art-note">PRESERVE THE CONTENT.<br/>REFINE THE CONTAINER.</div>
+            <div className="uf-art-note">EXTRACT. ORGANIZE. DELIVER.<br/>PRESERVE THE CONTENT.</div>
           </div>
         </div>
       </section>
       <section className="uf-values uf-section-line">
         <div className="uf-shell uf-values-grid">
           {featured.map((item) => <article key={item.index} className="uf-value">
-            <span className="uf-eyebrow">{item.index} / OUR PRINCIPLES</span>
+            <span className="uf-eyebrow">{item.index} / THE EOD METHOD</span>
             <h2>{item.title}</h2>
             <p>{item.text}</p>
           </article>)}

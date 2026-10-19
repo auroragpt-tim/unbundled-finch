@@ -201,3 +201,6 @@ body { background:#faf8f2; color:#111111; }
  .uf-footer-brand{grid-column:auto;}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.uf-public *{transition:none!important;}}
+
+/* EOD: primary brand promise */
+.uf-footer-brand .uf-footer-motto{color:#111;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:10px;}
