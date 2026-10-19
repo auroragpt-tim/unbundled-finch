@@ -202,5 +202,5 @@ body { background:#faf8f2; color:#111111; }
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.uf-public *{transition:none!important;}}
 
-/* EOD: primary brand promise */
+/* Consistent styling for the Extract. Organize. Deliver. tagline */
 .uf-footer-brand .uf-footer-motto{color:#111;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:10px;}

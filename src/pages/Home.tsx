@@ -24,7 +24,7 @@ export default function Home() {
               <Link href="/services" className="uf-button uf-button-dark">Explore services <span aria-hidden="true">↗</span></Link>
               <Link href="/contact" className="uf-button">Discuss a project <span aria-hidden="true">→</span></Link>
             </div>
-            <p className="uf-hero-small">EOD / The Unbundled Finch method</p>
+            
           </div>
           <div className="uf-hero-art" aria-hidden="true">
             <div className="uf-art-index">UF / 01 <span>CLARITY THROUGH STRUCTURE</span></div>
@@ -40,7 +40,7 @@ export default function Home() {
       <section className="uf-values uf-section-line">
         <div className="uf-shell uf-values-grid">
           {featured.map((item) => <article key={item.index} className="uf-value">
-            <span className="uf-eyebrow">{item.index} / THE EOD METHOD</span>
+            <span className="uf-eyebrow">{item.index}</span>
             <h2>{item.title}</h2>
             <p>{item.text}</p>
           </article>)}

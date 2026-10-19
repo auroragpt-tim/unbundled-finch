@@ -12,9 +12,9 @@ export default function About(){
       <p>When a question calls for an editorial, factual, strategic, or legal decision, we ask the client for direction. We then carry out the authorized technical instruction.</p></div>
     </div></section>
     <section className="uf-values uf-section-line"><div className="uf-shell uf-values-grid">
-      <article className="uf-value"><span className="uf-eyebrow">01 / EOD</span><h2>Extract.</h2><p>Begin with the client’s source materials and production specifications while preserving authorship and original wording.</p></article>
-      <article className="uf-value"><span className="uf-eyebrow">02 / EOD</span><h2>Organize.</h2><p>Build clear navigation through document sequencing, bookmarks, internal links, indexes, and page labels.</p></article>
-      <article className="uf-value"><span className="uf-eyebrow">03 / EOD</span><h2>Deliver.</h2><p>Verify the agreed technical requirements and supply prepared files for the client's substantive review.</p></article>
+      <article className="uf-value"><span className="uf-eyebrow">01</span><h2>Extract.</h2><p>Begin with the client’s source materials and production specifications while preserving authorship and original wording.</p></article>
+      <article className="uf-value"><span className="uf-eyebrow">02</span><h2>Organize.</h2><p>Build clear navigation through document sequencing, bookmarks, internal links, indexes, and page labels.</p></article>
+      <article className="uf-value"><span className="uf-eyebrow">03</span><h2>Deliver.</h2><p>Verify the agreed technical requirements and supply prepared files for the client's substantive review.</p></article>
     </div></section>
     <section className="uf-section"><div className="uf-shell uf-about-grid">
       <div><p className="uf-eyebrow">Professional boundaries</p><h2 className="uf-subhead">Technical support.<br/>Not legal counsel.</h2></div>

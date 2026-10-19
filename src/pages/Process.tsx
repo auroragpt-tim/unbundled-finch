@@ -10,7 +10,7 @@ export default function Process(){
   return <div className="uf-site">
     <section className="uf-page-intro"><div className="uf-shell">
       <p className="uf-eyebrow">02 / Process</p><h1>Careful work.<br/><em>Clear boundaries.</em></h1>
-      <p className="uf-lede">Extract. Organize. Deliver. The EOD workflow protects original authorship and keeps editorial or legal decisions with the client.</p>
+      <p className="uf-lede">Extract. Organize. Deliver. The production workflow protects original authorship and keeps editorial or legal decisions with the client.</p>
     </div></section>
     <section className="uf-section"><div className="uf-shell">
       <div className="uf-process-steps">{steps.map(s=><article className="uf-process-step" key={s.n}>
