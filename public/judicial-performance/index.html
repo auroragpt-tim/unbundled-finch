@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf8f2">
+  <meta name="description" content="Explore question-level evaluations from Arizona's 2026 judicial performance review reports. Independently presented, sourced public data for judicial retention voters.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2026 Arizona Judicial Performance Survey Explorer | Unbundled Finch">
+  <meta property="og:description" content="Explore judicial performance survey responses by judge, criterion, and respondent group. An independent, nonpartisan presentation of Arizona's official public reports.">
+  <meta property="og:url" content="https://unbundledfinch.com/judicial-performance/">
+  <meta property="og:image" content="https://public.flourish.studio/story/3837592/thumbnail">
+  <link rel="canonical" href="https://unbundledfinch.com/judicial-performance/">
+  <link rel="icon" type="image/svg+xml" href="/assets/finch-mark.svg">
+  <title>2026 Arizona Judicial Performance Survey Explorer | Unbundled Finch</title>
+  <style>
+    :root{--paper:#faf8f2;--ink:#111;--muted:#55514b;--border:#d8d3ca;}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;margin:0}
+    a{color:inherit;text-underline-offset:3px}a:focus-visible{outline:2px solid #1d568a;outline-offset:4px}
+    .shell{width:min(calc(100% - 48px),1450px);margin-inline:auto}
+    .site-header{border-bottom:1px solid var(--border)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;min-height:100px}
+    .brand img{display:block;width:min(250px,48vw);height:auto}
+    .back-link{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:700;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:8px}
+    .hero{padding:68px 0 40px;border-bottom:1px solid var(--border)}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;font-weight:700;color:var(--muted);margin:0 0 24px}
+    h1{font-size:clamp(37px,5vw,75px);font-weight:400;letter-spacing:-.05em;line-height:1.05;max-width:1120px;margin:0 0 28px}
+    h1 em{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+    .lede{font-size:clamp(17px,1.45vw,20px);line-height:1.7;color:#3c3935;max-width:960px;margin:0}
+    .instructions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--border);margin:35px 0}
+    .instructions article{padding:23px 26px 23px 0}
+    .instructions article+article{border-left:1px solid var(--border);padding-left:26px}
+    .instructions strong{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
+    .instructions p{font-size:14px;line-height:1.65;color:var(--muted);margin:0}
+    .viewer{padding:35px 0 55px}
+    .viewer-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:23px}
+    h2{font-size:clamp(24px,2.5vw,36px);font-weight:400;letter-spacing:-.04em;margin:0}
+    .button{border:1px solid var(--ink);padding:14px 19px;text-transform:uppercase;letter-spacing:.11em;font-size:11px;text-decoration:none;font-weight:700;display:inline-block}
+    .button:hover{background:var(--ink);color:var(--paper)}
+    .flourish-wrapper{background:white;border:1px solid var(--border);padding:12px;min-height:480px}
+    .notes{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:60px;border-top:1px solid var(--border);padding:43px 0 70px}
+    .notes h2{font-size:26px;margin-bottom:15px}
+    .notes p,.notes li{color:#4a4741;font-size:14px;line-height:1.8}
+    .notes ul{padding-left:19px;margin:12px 0}
+    footer{background:#f2eee7;border-top:1px solid var(--border);padding:26px 0;font-size:12px;color:#5c5751}
+    .footer-inner{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+    @media(max-width:760px){.shell{width:min(calc(100% - 28px),1450px)}.header-inner{min-height:72px}.brand img{width:185px}.hero{padding:46px 0 27px}.instructions{grid-template-columns:1fr}.instructions article{padding:17px 0!important;border-left:0!important}.instructions article+article{border-top:1px solid var(--border)}.notes{grid-template-columns:1fr;gap:18px}.flourish-wrapper{padding:0;min-height:380px}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Unbundled Finch home"><img src="/assets/logo.svg" alt="Unbundled Finch"></a>
+      <a class="back-link" href="/">Back to Unbundled Finch</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <p class="eyebrow">Public data · Judicial retention · Arizona 2026</p>
+        <h1>Understand the surveys.<br><em>Make your own judgment.</em></h1>
+        <p class="lede">Judicial retention can be one of the least familiar parts of the ballot. This independent, nonpartisan interactive explorer organizes publicly released Arizona judicial performance survey results so voters can examine the questions, response distributions, and number of ratings for themselves.</p>
+      </div>
+    </section>
+    <section class="shell">
+      <div class="instructions" aria-label="How to use this interactive visualization">
+        <article><strong>01 · Choose a category</strong><p>Use the Story arrows to move through Legal Ability, Integrity, Communication, Judicial Temperament, and Administrative Performance.</p></article>
+        <article><strong>02 · Choose a judge</strong><p>Select a judge from the dropdown within each category. The selection is independent on each slide.</p></article>
+        <article><strong>03 · Explore the evidence</strong><p>Compare survey response distributions by respondent group. Hover over colored bars for question-level counts, published ratings, and source information.</p></article>
+      </div>
+    </section>
+    <section class="viewer" aria-labelledby="viewer-title">
+      <div class="shell">
+        <div class="viewer-heading">
+          <h2 id="viewer-title">2026 Judicial Performance Survey Explorer</h2>
+          <a class="button" href="https://public.flourish.studio/story/3837592/" target="_blank" rel="noopener noreferrer">Open full-screen visualization ↗</a>
+        </div>
+        <div class="flourish-wrapper">
+          <div class="flourish-embed flourish-chart" data-src="story/3837592"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/story/3837592/thumbnail" width="100%" alt="Preview of the 2026 Arizona Judicial Performance Survey Explorer"></noscript></div>
+        </div>
+      </div>
+    </section>
+    <section class="shell notes" aria-labelledby="methodology-title">
+      <div>
+        <h2 id="methodology-title">How to read these results</h2>
+        <p>The charts present <strong>published survey responses</strong>, not the author's judgments or voting recommendations. A 100% bar may represent only a few ratings; the total number varies by question and respondent group. Blank bars mean the selected group has no plotted responses for that question, not an unfavorable evaluation. The visualizations currently focus on the February–September 2025 questionnaire, with distinct presiding-judge survey results where available.</p>
+        <p>These are voluntary survey findings, not judicial voting records, and they do not replace the Arizona Commission on Judicial Performance Review's full assessment. The site is not affiliated with the Arizona judiciary or an election office.</p>
+      </div>
+      <div>
+        <h2>Sources and scope</h2>
+        <p>Based on the <a href="https://jpr.azcourts.gov/Judicial-Performance-Reports/2026-Judicial-Performance-Reports" target="_blank" rel="noopener noreferrer">official 2026 Arizona Judicial Performance Review reports</a>. The dataset covers judges appearing on the Maricopa County judicial-retention portion of the 2026 general-election ballot, where applicable.</p>
+        <p>It does <strong>not</strong> cover candidates in partisan races, ballot propositions, or every elected judicial office. Information is presented for independent voter evaluation.</p>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Unbundled Finch · Extract. Organize. Deliver.</span><span>Independent presentation of public data · Not legal advice or an official judicial evaluation</span></div></footer>
+</body>
+</html>
