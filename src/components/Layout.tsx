@@ -52,6 +52,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Link href="/process">Our process</Link>
             <Link href="/about">Our approach</Link>
             <Link href="/pricing">Project pricing</Link>
+            <a href="/judicial-performance/">Judicial survey explorer</a>
           </div>
           <div>
             <span className="uf-eyebrow">Information</span>
