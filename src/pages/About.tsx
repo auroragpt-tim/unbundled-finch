@@ -3,13 +3,19 @@ export default function About(){
   return <div className="uf-site">
     <section className="uf-page-intro"><div className="uf-shell">
       <p className="uf-eyebrow">03 / About</p><h1>Clarity, without<br/><em>intervention.</em></h1>
-      <p className="uf-lede">Extract. Organize. Deliver. Unbundled Finch is a technical legal-document production and litigation-support service with a deliberately defined scope.</p>
+      <p className="uf-lede">Extract. Organize. Deliver. Unbundled Finch brings together client-directed legal document production and independent research into workflow automation, information systems, and applied AI.</p>
     </div></section>
     <section className="uf-section"><div className="uf-shell uf-about-grid">
       <div><p className="uf-eyebrow">Our philosophy</p><h2 className="uf-about-quote">“You write it.<br/>We preserve it.”</h2></div>
       <div className="uf-about-copy"><p>Our work is the architecture around your legal content: PDF assembly, navigation, hyperlinks, searchable text, indexing, and quality control. Clear production makes complex records more usable without changing who authored them.</p>
       <p>Source materials remain under the client's substantive control. An apparent typo, citation discrepancy, factual inconsistency, or omission is not permission for us to rewrite it.</p>
       <p>When a question calls for an editorial, factual, strategic, or legal decision, we ask the client for direction. We then carry out the authorized technical instruction.</p></div>
+    </div></section>
+    <section className="uf-section"><div className="uf-shell uf-about-grid">
+      <div><p className="uf-eyebrow">How we are organized</p><h2 className="uf-subhead">Two areas.<br/><em>A shared standard.</em></h2></div>
+      <div className="uf-about-copy"><p><strong>Finch Services</strong> provides technical legal-document production and litigation support under client direction. The goal is accurate, functional deliverables without intervention in substantive legal content.</p>
+      <p><strong>Finch Technologies</strong> is a separate research and development initiative exploring workflow design, automation, applied AI, and systems for organizing complex information. Research projects and prototypes are not presented as deployed client solutions.</p>
+      <Link href="/technologies" className="uf-text-link">Meet Finch Technologies <span aria-hidden="true">↗</span></Link></div>
     </div></section>
     <section className="uf-values uf-section-line"><div className="uf-shell uf-values-grid">
       <article className="uf-value"><span className="uf-eyebrow">01</span><h2>Extract.</h2><p>Begin with the client’s source materials and production specifications while preserving authorship and original wording.</p></article>
