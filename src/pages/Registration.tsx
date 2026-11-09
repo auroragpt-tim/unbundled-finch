@@ -39,7 +39,7 @@ export default function Registration() {
       <section className="uf-page-intro">
         <div className="uf-shell">
           <p className="uf-eyebrow">Unbundled Finch / Registration</p>
-          <h1>Register your<br/><em>interest.</em></h1>
+          <h1>Register Your<br/><em>Interest.</em></h1>
           <p className="uf-lede">Interested in document-production services? Share your contact information and we'll follow up to discuss what you need.</p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function Registration() {
             <p className="uf-eyebrow">Prospective client information</p>
             {submitted ? (
               <div className="uf-registration-confirmation" role="status" aria-live="polite">
-                <h2>Thank you for your interest.</h2>
+                <h2>Thank You For Your Interest.</h2>
                 <p>Your information was submitted. Unbundled Finch can follow up using the contact details you provided.</p>
                 <p>This registration does not create a login account or grant portal access.</p>
                 <button type="button" className="uf-button" onClick={() => setSubmitted(false)}>
@@ -107,7 +107,7 @@ export default function Registration() {
           </div>
           <aside className="uf-contact-aside">
             <p className="uf-eyebrow">What happens next</p>
-            <h2>Start with<br/>a conversation.</h2>
+            <h2>Start With<br/>A Conversation.</h2>
             <p>Registration helps us understand who is interested and how to follow up. There is no account password, customer dashboard, or document upload at this stage.</p>
             <div className="uf-aside-rule" />
             <p className="uf-eyebrow">Prefer email?</p>
