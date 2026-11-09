@@ -63,6 +63,29 @@ export default function Home() {
           <div className="uf-section-link"><Link href="/services">View all production services <span aria-hidden="true">→</span></Link></div>
         </div>
       </section>
+      <section className="uf-section uf-section-line">
+        <div className="uf-shell">
+          <div className="uf-section-heading">
+            <div><p className="uf-eyebrow">Two disciplines / One purpose</p><h2>Production expertise.<br/><em>Engineering perspective.</em></h2></div>
+            <p>Unbundled Finch brings together specialized document-production services and an independent research initiative focused on better ways to structure, process, and use information.</p>
+          </div>
+          <div className="uf-services-grid">
+            <article className="uf-service-card">
+              <span className="uf-eyebrow">01 / FINCH SERVICES</span>
+              <h2>Document production &amp; litigation support</h2>
+              <p>Client-directed technical production for complex legal documents, records, exhibits, and electronic binders.</p>
+              <Link href="/services" className="uf-text-link">Explore services <span aria-hidden="true">↗</span></Link>
+            </article>
+            <article className="uf-service-card">
+              <span className="uf-eyebrow">02 / FINCH TECHNOLOGIES</span>
+              <h2>Workflow systems &amp; applied research</h2>
+              <p>An independent research and development initiative exploring automation, AI-assisted document systems, and knowledge engineering.</p>
+              <Link href="/technologies" className="uf-text-link">Explore technologies <span aria-hidden="true">↗</span></Link>
+            </article>
+          </div>
+          <div className="uf-section-link"><Link href="/projects">View projects &amp; research <span aria-hidden="true">→</span></Link></div>
+        </div>
+      </section>
       <section className="uf-statement">
         <div className="uf-shell uf-statement-grid">
           <p className="uf-eyebrow">Our core principle</p>
