@@ -49,7 +49,7 @@ export default function Home() {
       <section className="uf-section">
         <div className="uf-shell">
           <div className="uf-section-heading">
-            <div><p className="uf-eyebrow">What we do</p><h2>Structure that<br/><em>serves the reader.</em></h2></div>
+            <div><p className="uf-eyebrow">What we do</p><h2>Structure That<br/><em>Serves The Reader.</em></h2></div>
             <p>Technical production for briefs, records, exhibits, and other client-provided legal materials. We work to your instructions—not independently on legal substance.</p>
           </div>
           <div className="uf-service-list">
@@ -63,10 +63,33 @@ export default function Home() {
           <div className="uf-section-link"><Link href="/services">View all production services <span aria-hidden="true">→</span></Link></div>
         </div>
       </section>
+      <section className="uf-section uf-section-line">
+        <div className="uf-shell">
+          <div className="uf-section-heading">
+            <div><p className="uf-eyebrow">Two disciplines / One purpose</p><h2>Production Expertise.<br/><em>Engineering Perspective.</em></h2></div>
+            <p>Unbundled Finch brings together specialized document-production services and an independent research initiative focused on better ways to structure, process, and use information.</p>
+          </div>
+          <div className="uf-services-grid">
+            <article className="uf-service-card">
+              <span className="uf-eyebrow">01 / FINCH SERVICES</span>
+              <h2>Document Production &amp; Litigation Support</h2>
+              <p>Client-directed technical production for complex legal documents, records, exhibits, and electronic binders.</p>
+              <Link href="/services" className="uf-text-link">Explore services <span aria-hidden="true">↗</span></Link>
+            </article>
+            <article className="uf-service-card">
+              <span className="uf-eyebrow">02 / FINCH TECHNOLOGIES</span>
+              <h2>Workflow Systems &amp; Applied Research</h2>
+              <p>An independent research and development initiative exploring automation, AI-assisted document systems, and knowledge engineering.</p>
+              <Link href="/technologies" className="uf-text-link">Explore technologies <span aria-hidden="true">↗</span></Link>
+            </article>
+          </div>
+          <div className="uf-section-link"><Link href="/projects">View projects &amp; research <span aria-hidden="true">→</span></Link></div>
+        </div>
+      </section>
       <section className="uf-statement">
         <div className="uf-shell uf-statement-grid">
           <p className="uf-eyebrow">Our core principle</p>
-          <div><blockquote>You write it.<br/>We preserve it.</blockquote>
+          <div><blockquote>You Write It.<br/>We Preserve It.</blockquote>
           <p>If something is unclear, we ask rather than guess. You make the substantive decisions. We make the technical document work.</p>
           <Link href="/about" className="uf-text-link">Learn about our approach <span aria-hidden="true">↗</span></Link>
           </div>
@@ -74,7 +97,7 @@ export default function Home() {
       </section>
       <section className="uf-final-cta">
         <div className="uf-shell uf-cta-inner">
-          <div><p className="uf-eyebrow">Start a conversation</p><h2>Complex material.<br/>Clearer presentation.</h2></div>
+          <div><p className="uf-eyebrow">Start a conversation</p><h2>Complex Material.<br/>Clearer Presentation.</h2></div>
           <Link href="/contact" className="uf-button uf-button-dark">Discuss your project <span aria-hidden="true">↗</span></Link>
         </div>
       </section>

@@ -51,7 +51,7 @@ export default function Terms() {
     <div className="flex flex-col">
       <section className="bg-secondary/30 py-20 border-b border-border">
         <div className="container">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">TERMS OF SERVICE</h1>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Terms Of Service</h1>
         </div>
       </section>
 

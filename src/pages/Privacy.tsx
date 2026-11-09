@@ -58,7 +58,7 @@ export default function Privacy() {
     <div className="flex flex-col">
       <section className="bg-secondary/30 py-20 border-b border-border">
         <div className="container">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">PRIVACY POLICY</h1>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Privacy Policy</h1>
         </div>
       </section>
 

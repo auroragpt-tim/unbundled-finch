@@ -10,6 +10,8 @@ import Services from "./pages/Services";
 import Process from "./pages/Process";
 import Pricing from "./pages/Pricing";
 import About from "./pages/About";
+import Technologies from "./pages/Technologies";
+import Research from "./pages/Research";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -35,6 +37,8 @@ function Router() {
       <Route path="/process"><Layout><Process /></Layout></Route>
       <Route path="/pricing"><Layout><Pricing /></Layout></Route>
       <Route path="/about"><Layout><About /></Layout></Route>
+      <Route path="/technologies"><Layout><Technologies /></Layout></Route>
+      <Route path="/projects"><Layout><Research /></Layout></Route>
       <Route path="/contact"><Layout><Contact /></Layout></Route>
       <Route path="/privacy"><Layout><Privacy /></Layout></Route>
       <Route path="/terms"><Layout><Terms /></Layout></Route>
