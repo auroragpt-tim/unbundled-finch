@@ -3,9 +3,9 @@ import { Link, useLocation } from "wouter";
 
 const navItems = [
   { href: "/services", label: "Services" },
-  { href: "/process", label: "Process" },
+  { href: "/technologies", label: "Technologies" },
+  { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -44,11 +44,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="uf-footer-brand">
             <img src="/assets/logo.svg" alt="Unbundled Finch" />
             <p className="uf-footer-motto">Extract. Organize. Deliver.</p>
-            <p>Technical document production and litigation support.</p>
+            <p>Document production, applied research, and workflow technology.</p>
           </div>
           <div>
             <span className="uf-eyebrow">Explore</span>
             <Link href="/services">Services</Link>
+            <Link href="/technologies">Finch Technologies</Link>
+            <Link href="/projects">Projects &amp; research</Link>
             <Link href="/process">Our process</Link>
             <Link href="/about">Our approach</Link>
             <Link href="/pricing">Project pricing</Link>
