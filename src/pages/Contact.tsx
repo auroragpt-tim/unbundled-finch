@@ -18,7 +18,7 @@ export default function Contact(){
   };
   return <div className="uf-site">
     <section className="uf-page-intro"><div className="uf-shell">
-      <p className="uf-eyebrow">05 / Contact</p><h1>Tell us what<br/><em>you need organized.</em></h1>
+      <p className="uf-eyebrow">05 / Contact</p><h1>Tell Us What<br/><em>You Need Organized.</em></h1>
       <p className="uf-lede">Share a brief description of the technical work. We'll discuss scope and next steps before requesting project files.</p>
     </div></section>
     <section className="uf-section"><div className="uf-shell uf-contact-grid">
@@ -33,7 +33,7 @@ export default function Contact(){
         </form>
       </div>
       <aside className="uf-contact-aside"><p className="uf-eyebrow">Get in touch</p>
-        <h2>Clarity starts<br/>with a conversation.</h2>
+        <h2>Clarity Starts<br/>With A Conversation.</h2>
         <p>For technical document projects, questions about scope, or production requirements, reach out through the form or email.</p>
         <a className="uf-text-link" href="mailto:atticus@unbundledfinch.com">atticus@unbundledfinch.com <span aria-hidden="true">↗</span></a>
         <div className="uf-aside-rule"/><p className="uf-small-note">Unbundled Finch provides technical document production only—not legal advice or representation.</p>
