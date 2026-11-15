@@ -34,7 +34,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className={"uf-nav-link" + (location === item.href ? " uf-nav-active" : "")}
                 onClick={() => setMobileOpen(false)}>{item.label}</Link>
             ))}
-            <Link href="/portal" className="uf-portal-link" onClick={() => setMobileOpen(false)}>Register interest <span aria-hidden="true">↗</span></Link>
+            <Link href="/portal" className="uf-portal-link" onClick={() => setMobileOpen(false)}>Request Services <span aria-hidden="true">↗</span></Link>
           </nav>
         </div>
       </header>
@@ -62,7 +62,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <a href="mailto:atticus@unbundledfinch.com">atticus@unbundledfinch.com</a>
             <Link href="/privacy">Privacy policy</Link>
             <Link href="/terms">Terms of service</Link>
-            <Link href="/portal">Register interest</Link>
+            <Link href="/portal">Request Services</Link>
           </div>
         </div>
         <div className="uf-shell uf-footer-bottom">

@@ -1,72 +1,43 @@
-import { Streamdown } from 'streamdown';
+import { Streamdown } from "streamdown";
 
 const privacyContent = `
 # Privacy Policy
 
-**Last Updated:** January 12, 2026
+**Updated:** November 14, 2026
 
-Unbundled Finch ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our document processing services.
+Unbundled Finch operates a public information website and preliminary project-inquiry forms. This notice describes the personal information requested through those forms. It does not create an attorney-client relationship.
 
-## 1. Information We Collect
+## What the inquiry forms collect
 
-We may collect information about you in a variety of ways. The information we may collect on the Site includes:
+Our public forms ask for your name, email address, a technical service category, approximate document volume, requested output format and timing. Organization, phone number and a brief technical overview are optional. If you prefer a phone response, we ask you to supply a phone number.
 
-### Personal Data
-Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the Site or when you choose to participate in various activities related to the Site.
+**Do not include legal documents, client identifiers, case narratives, privileged material or other sensitive information in these forms.** The forms have no document-upload feature. We arrange any needed exchange of project files separately.
 
-### Derivative Data
-Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site.
+## How submissions are processed
 
-## 2. Use of Your Information
+The inquiry forms submit to **Formspree**, a third-party form-processing service. Formspree receives the information you enter and processes it to deliver the inquiry to Unbundled Finch. Your information may be stored or transmitted according to that provider's systems and policies. Read [Formspree's privacy policy](https://formspree.io/legal/privacy-policy/) to learn about its handling of submitted data.
 
-Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:
+We use inquiry information to respond to you, discuss potential production work and communicate about your request. Sending an inquiry does not create an account, confirm acceptance of a work order, or authorize legal services.
 
-*   Create and manage your account.
-*   Process your document requests and deliver services.
-*   Email you regarding your account or order.
-*   Fulfill and manage purchases, orders, payments, and other transactions related to the Site.
-*   Generate a personal profile about you to make future visits to the Site more personalized.
-*   Increase the efficiency and operation of the Site.
-*   Monitor and analyze usage and trends to improve your experience with the Site.
-*   Notify you of updates to the Site.
-*   Offer new products, services, and/or recommendations to you.
+## Other site information
 
-## 3. Disclosure of Your Information
+Our hosting and other infrastructure providers may process technical information, such as IP address, browser details or request logs, as part of operating and protecting this website. We may also receive messages sent directly to our email address. Information already supplied in those messages may be handled differently from the structured public forms.
 
-We may share information we have collected about you in certain situations. Your information may be disclosed as follows:
+## Access, corrections and questions
 
-### By Law or to Protect Rights
-If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.
+To ask about information you submitted, request a correction or inquire about deletion, email **atticus@unbundledfinch.com**. We will review the request in light of operational and legal obligations.
 
-### Third-Party Service Providers
-We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.
-
-## 4. Security of Your Information
-
-We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.
-
-## 5. Contact Us
-
-If you have questions or comments about this Privacy Policy, please contact us at:
-
-**Unbundled Finch**  
-Email: Vanguard@unbundledfinch.com
+No internet transmission or system can be guaranteed completely secure. Do not send sensitive case materials until a suitable transfer process is agreed.
 `;
 
 export default function Privacy() {
-  return (
-    <div className="flex flex-col">
-      <section className="bg-secondary/30 py-20 border-b border-border">
-        <div className="container">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Privacy Policy</h1>
-        </div>
-      </section>
-
-      <section className="container py-20 max-w-4xl mx-auto">
-        <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <Streamdown>{privacyContent}</Streamdown>
-        </div>
-      </section>
-    </div>
-  );
+  return <div className="uf-site">
+    <section className="uf-page-intro"><div className="uf-shell">
+      <p className="uf-eyebrow">Policy / Privacy</p><h1>Privacy &amp;<br/><em>Inquiries.</em></h1>
+      <p className="uf-lede">How we handle preliminary technical service inquiries.</p>
+    </div></section>
+    <section className="uf-section"><div className="uf-shell">
+      <div className="max-w-4xl prose prose-neutral prose-lg"><Streamdown>{privacyContent}</Streamdown></div>
+    </div></section>
+  </div>;
 }

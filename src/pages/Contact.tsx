@@ -1,42 +1,23 @@
-import { useState } from "react";
-import { toast } from "sonner";
+import ProductionInquiryForm from "@/components/ProductionInquiryForm";
 
-export default function Contact(){
-  const [sending,setSending]=useState(false);
-  const submit=async (event:React.FormEvent<HTMLFormElement>)=>{
-    event.preventDefault();
-    const form=event.currentTarget;
-    setSending(true);
-    try{
-      const response=await fetch("https://formspree.io/f/meeeqkyp",{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});
-      if(!response.ok) throw new Error("Submission failed");
-      toast.success("Your message was sent.");
-      form.reset();
-    }catch{
-      toast.error("The form could not send. Please try again or contact us by email.");
-    }finally{setSending(false);}
-  };
+export default function Contact() {
   return <div className="uf-site">
     <section className="uf-page-intro"><div className="uf-shell">
-      <p className="uf-eyebrow">05 / Contact</p><h1>Tell Us What<br/><em>You Need Organized.</em></h1>
-      <p className="uf-lede">Share a brief description of the technical work. We'll discuss scope and next steps before requesting project files.</p>
+      <p className="uf-eyebrow">05 / Contact</p>
+      <h1>Tell Us What<br/><em>You Need Organized.</em></h1>
+      <p className="uf-lede">Describe the technical production you need without sharing case details or files. We'll discuss scope, specifications and next steps.</p>
     </div></section>
-    <section className="uf-section"><div className="uf-shell uf-contact-grid">
-      <div><p className="uf-eyebrow">Start an inquiry</p>
-        <form className="uf-form" onSubmit={submit}>
-          <div className="uf-form-two"><div><label htmlFor="uf-first">First name</label><input id="uf-first" name="firstName" autoComplete="given-name" required /></div>
-          <div><label htmlFor="uf-last">Last name</label><input id="uf-last" name="lastName" autoComplete="family-name" required /></div></div>
-          <label htmlFor="uf-email">Email address</label><input id="uf-email" name="email" type="email" autoComplete="email" required />
-          <label htmlFor="uf-project">What kind of technical production do you need?</label><textarea id="uf-project" name="message" rows={6} required placeholder="For example: eBinder assembly, internal hyperlinks, OCR, or a Table of Authorities." />
-          <p className="uf-small-note">Please don't include confidential case details or upload sensitive documents in this initial inquiry.</p>
-          <button className="uf-button uf-button-dark" type="submit" disabled={sending}>{sending?"Sending…":"Send inquiry"} <span aria-hidden="true">↗</span></button>
-        </form>
-      </div>
-      <aside className="uf-contact-aside"><p className="uf-eyebrow">Get in touch</p>
-        <h2>Clarity Starts<br/>With A Conversation.</h2>
-        <p>For technical document projects, questions about scope, or production requirements, reach out through the form or email.</p>
+    <section className="uf-section"><div className="uf-shell uf-intake-layout">
+      <ProductionInquiryForm source="contact" />
+      <aside className="uf-intake-aside">
+        <p className="uf-eyebrow">Production first</p>
+        <h2>Clarity Starts<br/><em>With A Conversation.</em></h2>
+        <p>For eBinders, Tables of Authorities, OCR, bookmarks, hyperlinks and other document-production tasks, this form helps us understand the essentials before requesting any source material.</p>
+        <div className="uf-aside-rule" />
+        <p className="uf-eyebrow">Direct contact</p>
         <a className="uf-text-link" href="mailto:atticus@unbundledfinch.com">atticus@unbundledfinch.com <span aria-hidden="true">↗</span></a>
-        <div className="uf-aside-rule"/><p className="uf-small-note">Unbundled Finch provides technical document production only—not legal advice or representation.</p>
+        <div className="uf-aside-rule" />
+        <p className="uf-small-note">Unbundled Finch provides technical legal-document production only—not legal advice or representation. This form does not establish attorney-client privilege.</p>
       </aside>
     </div></section>
   </div>;

@@ -1,85 +1,50 @@
-# Unbundled Finch - Legal Document Processing Service
+# Unbundled Finch — document production & Finch Technologies
 
-A Swiss-style, static website with a client portal, designed for deployment on Netlify.
+A public website and **non-confidential** technical production inquiry experience, built with React 19, TypeScript, Tailwind CSS and Wouter, deployed with Netlify.
 
-## Project Overview
+## Active public routes
 
-- **Stack**: React 19, Tailwind CSS 4, Wouter (Routing)
-- **Design System**: Swiss International Typographic Style (Grid-based, Minimal, Neutral)
-- **Features**:
-  - Public Marketing Pages (Home, Services, Process, Pricing, About, Contact)
-  - Client Portal (Dashboard, New Request, Documents, Messages, Billing)
-  - Demo Mode Safety (Warnings, Disabled Uploads)
+- `/`, `/services`, `/process`, `/about`, `/technologies`, `/projects`: Public company information
+- `/contact`: Guided non-confidential technical inquiry (existing contact Formspree destination)
+- `/portal`: Guided non-confidential project inquiry (existing registration Formspree destination)
+- `/portal/*` legacy routes: Redirect to `/portal` (no user account, secure document portal or billing dashboard is enabled)
 
-## 🚀 Deployment Instructions (Netlify)
+## Inquiry design
 
-This project is configured for immediate deployment on Netlify.
+`src/components/ProductionInquiryForm.tsx` is shared by /contact and /portal. It collects:
 
-### 1. Connect to GitHub
-Push this repository to your GitHub account.
+1. One primary technical production service (or "not sure").
+2. Approximate file count, desired output format, requested timing, and optional *non-confidential* technical summary.
+3. Contact name and email, optional organization and phone, preferred reply method, and explicit acknowledgments.
+4. A confirmation review before external submission.
 
-### 2. Create New Site on Netlify
-1. Log in to [Netlify](https://app.netlify.com/).
-2. Click **"Add new site"** > **"Import from an existing project"**.
-3. Select **GitHub** and choose your `unbundled-finch` repository.
+The catalog of services and internal technical QC prompts is in `src/lib/productionIntake.ts`. The form **does not** upload files, collect client names or legal narratives as designated fields, create a login, or automatically accept work / commit to deadlines. Do not use it for confidential or privileged information. No localStorage, cookies or draft persistence are added by this form.
 
-### 3. Configure Build Settings
-Netlify should automatically detect the settings from `netlify.toml`, but verify them:
-- **Build command**: `npm run build`
-- **Publish directory**: `dist/public`
+### Third-party form destination
 
-Click **"Deploy site"**.
+These are the repository's **pre-existing** Formspree endpoints:
 
-## 🔐 Authentication Setup (Netlify Identity)
+- Contact inquiries → `https://formspree.io/f/meeeqkyp`
+- Project inquiries → `https://formspree.io/f/moejzwne`
 
-To make the Portal truly secure (instead of the current demo login), enable Netlify Identity:
+Before using live production inquiries, verify ownership, inbox routing, processor terms, privacy notice, data retention and access permissions for both endpoints. A successful HTTP response is **not** a signed service agreement, deliverable commitment or a secure client-file handoff. The external Formspree account has not been inspected here.
 
-1. Go to **Site Settings** > **Identity** > **Enable Identity**.
-2. Under **Registration preferences**, set to **Invite only** (recommended for a private client portal).
-3. Under **Services** > **Git Gateway**, enable it if you plan to use Netlify CMS (optional).
-4. **Protecting Routes**:
-   - The current app handles routing on the client side (`wouter`).
-   - To enforce server-side protection, you can add role-based redirects in `netlify.toml`:
-     ```toml
-     [[redirects]]
-       from = "/portal/*"
-       to = "/portal/login"
-       status = 401
-       force = true
-       conditions = {Role = ["client"]}
-     ```
-   - *Note: This requires integrating the Netlify Identity Widget into the React app code.*
+The former /portal/new-request template had an attachment upload input and a different form endpoint. Its TSX and JS components have been retired; old portal paths redirect to the public form.
 
-## ⚠️ Demo Mode & Safety
+## Deployment and local development
 
-This project is currently in **DEMO MODE**.
-- **File Uploads**: Disabled in the UI.
-- **Forms**: Do not submit real data; they are for demonstration only.
-- **Data Storage**: No backend database is connected. All data is local/mocked.
+```bash
+npm ci
+npm run build
+npm run dev
+```
 
-### To Go Live:
-1. **Connect a Backend**: Integrate with a real API (e.g., Supabase, Firebase, or a custom Node.js server).
-2. **Enable Real Auth**: Replace the mock login in `Login.tsx` with the Netlify Identity Widget or Auth0.
-3. **Secure Uploads**: Connect the upload buttons to an S3 bucket or secure file storage service.
-4. **Remove Warnings**: Delete the "DEMO MODE" banners from `PortalLayout.tsx` and other pages.
+The Netlify publish directory is `dist` (see `netlify.toml`). The site must be smoke-tested after the deployment, including both endpoints, responsive step navigation, input validation, no-file-upload restrictions and privacy notice.
 
-## 🎨 Design System
+## Boundaries
 
-- **Font**: Inter (Neo-grotesque sans-serif)
-- **Colors**: Stark Black & White with functional accents (Swiss Red/Blue).
-- **Layout**: Strict grid alignment, high contrast, minimal decoration.
+Unbundled Finch provides client-directed technical document production, **not** legal advice, case evaluation, representation or confidential criminal-defense intake. Do not import third-party law-firm sales scripts or request factual details about legal matters on the public website. See `docs/finch-technologies/technical-intake-foundation.md` and the existing Client Integrity & Non-Intervention Policy for principles.
 
-## Local Development
+## Future secure production workspace (not implemented)
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Start development server:
-   ```bash
-   npm run dev
-   ```
-3. Build for production:
-   ```bash
-   npm run build
-   ```
+A secure authenticated document-transfer system would require a threat model, private storage, server-side authorization, encryption, malware/file-type checks, audit logs, retention rules, independent privacy/security review and explicit client instructions. Public Formspree forms are not a substitute.
