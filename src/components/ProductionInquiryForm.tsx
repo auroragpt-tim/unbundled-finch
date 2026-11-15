@@ -29,10 +29,11 @@ const initial: FormValues = {
 };
 const STEP_NAMES = ["Service", "Scope", "Contact", "Review"] as const;
 const FORM_ENDPOINTS: Record<Source, string> = {
-  // Preserve the site's existing verified-in-code public inquiry routes.
-  // These providers are not approved here for confidential legal material.
-  contact: "https://formspree.io/f/meeeqkyp",
-  project: "https://formspree.io/f/moejzwne",
+  // Both public inquiry pages route to the same user-provided Formspree form.
+  // Include form_source in the payload to distinguish where inquiries began.
+  // No confidential legal materials or uploads are permitted.
+  contact: "https://formspree.io/f/mkjrodld",
+  project: "https://formspree.io/f/mkjrodld",
 };
 
 const volumeLabels: Record<string, string> = {
