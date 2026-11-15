@@ -216,3 +216,74 @@ body { background:#faf8f2; color:#111111; }
 .uf-registration-confirmation h2{font-size:clamp(29px,3vw,42px);font-weight:400;letter-spacing:-.035em;margin-bottom:20px;}
 .uf-registration-confirmation p{font-size:16px;line-height:1.8;color:#514e49;max-width:650px;margin-bottom:18px;}
 .uf-registration-confirmation .uf-button{margin-top:16px;}
+
+
+/* Finch Production Studio — pre-engagement technical inquiry */
+.uf-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.uf-intake-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.36fr);gap:clamp(28px,5vw,90px);align-items:start;}
+.uf-intake-form{min-width:0;}
+.uf-intake-topline{display:flex;gap:16px;align-items:center;justify-content:space-between;border-top:2px solid #111;padding:18px 0 20px;}
+.uf-intake-step-count{font-family:Georgia,serif;font-size:22px;white-space:nowrap;letter-spacing:-.03em;}
+.uf-intake-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0 0 62px;padding:0;border-top:1px solid #b9b4ad;border-bottom:1px solid #b9b4ad;}
+.uf-intake-steps li{font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:19px 6px 17px;border-bottom:3px solid transparent;color:#716c65;min-width:0;}
+.uf-intake-steps li span{display:block;font-family:Georgia,serif;font-size:20px;letter-spacing:0;margin-bottom:6px;}
+.uf-intake-steps .is-active{border-color:#111;color:#111;font-weight:700;}
+.uf-intake-steps .is-complete{color:#3b3936;}
+.uf-intake-main h2,.uf-intake-confirmation h2{font-size:clamp(33px,3.55vw,55px);font-weight:400;line-height:1.14;letter-spacing:-.05em;margin:20px 0 25px;}
+.uf-intake-main h2:focus{outline:none;}
+.uf-intake-intro{font-size:16px;line-height:1.75;color:#565149;max-width:710px;margin:0 0 37px!important;}
+.uf-intake-service-grid{border:0;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.uf-intake-option{position:relative;border:1px solid #b8b2a7;min-height:167px;padding:20px 44px 19px 22px;display:flex;flex-direction:column;gap:13px;background:#faf8f2;cursor:pointer;transition:background .17s,border-color .17s;}
+.uf-intake-option:hover{background:#efebe3;}
+.uf-intake-option:focus-within{outline:2px solid #111;outline-offset:2px;}
+.uf-intake-option.is-selected{border-color:#111;background:#eae5dc;box-shadow:inset 0 0 0 1px #111;}
+.uf-intake-option input{position:absolute;top:22px;right:20px;width:17px;height:17px;accent-color:#111;}
+.uf-intake-option-index{font-size:10px;letter-spacing:.16em;color:#6c665e;}
+.uf-intake-option strong{font-family:Georgia,"Times New Roman",serif;font-size:22px;font-weight:400;letter-spacing:-.025em;line-height:1.25;}
+.uf-intake-option small{font-size:12px;line-height:1.65;color:#605b54;}
+.uf-intake-unsure{min-height:126px;}
+.uf-intake-hint{display:flex;flex-direction:column;gap:8px;border-left:2px solid #111;background:#ede9e1;padding:20px 24px;margin:0 0 36px;}
+.uf-intake-hint strong{font-size:14px;font-weight:600;}
+.uf-intake-hint span{font-size:13px;line-height:1.65;}
+.uf-intake-hint small{font-size:12px;color:#605b54;}
+.uf-intake-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 22px;}
+.uf-intake-fields>div{min-width:0;display:flex;flex-direction:column;}
+.uf-intake-fields label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;line-height:1.5;margin:0 0 9px;}
+.uf-intake-fields input,.uf-intake-fields select,.uf-intake-fields textarea{display:block;width:100%;min-height:51px;background:#faf8f2;border:1px solid #aaa59e;color:#111;padding:14px 15px;font:inherit;font-size:15px;border-radius:0;}
+.uf-intake-fields textarea{min-height:133px;resize:vertical;line-height:1.6;}
+.uf-intake-fields input:focus-visible,.uf-intake-fields select:focus-visible,.uf-intake-fields textarea:focus-visible{outline:2px solid #111;outline-offset:2px;}
+.uf-intake-full{grid-column:1 / -1;}
+.uf-intake-field-help{font-size:12px;line-height:1.65;color:#68635c;margin:9px 0 0!important;}
+.uf-intake-consents{margin-top:38px;padding:26px 0;border-top:1px solid #c5c0b8;}
+.uf-intake-consents>label{display:flex;align-items:flex-start;gap:13px;font-size:14px;line-height:1.65;margin:0 0 20px;cursor:pointer;}
+.uf-intake-consents input{flex-shrink:0;width:19px;height:19px;accent-color:#111;margin-top:2px;}
+.uf-intake-consents a{color:#111;text-decoration:underline;text-underline-offset:3px;}
+.uf-intake-review{margin:0 0 28px;border-top:1px solid #b9b4ad;}
+.uf-intake-review>div{display:grid;grid-template-columns:minmax(120px,.38fr) 1fr;gap:20px;padding:19px 0;border-bottom:1px solid #c9c4bc;}
+.uf-intake-review dt{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#655f58;}
+.uf-intake-review dd{font-size:15px;line-height:1.65;margin:0;overflow-wrap:anywhere;}
+.uf-intake-review-notes{white-space:pre-wrap;}
+.uf-intake-safety-note{border-left:2px solid #111;padding:13px 18px;background:#eeeae2;color:#514c45;line-height:1.65;font-size:13px;}
+.uf-intake-actions{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid #b9b4ad;margin-top:40px;padding-top:26px;}
+.uf-intake-actions .uf-button:disabled{cursor:not-allowed;}
+.uf-intake-actions .uf-button:focus-visible,.uf-intake-confirmation .uf-button:focus-visible{outline:3px solid #111;outline-offset:3px;}
+.uf-intake-action-note{font-size:12px;color:#68625c;line-height:1.5;}
+.uf-intake-aside{border-top:1px solid #aaa59d;padding-top:25px;}
+.uf-intake-aside h2{font-size:clamp(27px,2.6vw,42px);font-weight:400;line-height:1.2;letter-spacing:-.045em;margin:23px 0;}
+.uf-intake-aside>p:not(.uf-eyebrow){font-size:14px;line-height:1.8;color:#514d47;margin-bottom:22px;}
+.uf-intake-aside .uf-text-link{font-size:12px;letter-spacing:0;text-transform:none;overflow-wrap:anywhere;}
+.uf-intake-aside .uf-aside-rule{margin:30px 0 24px;}
+.uf-intake-confirmation{border-top:2px solid #111;padding:44px 0;max-width:760px;}
+.uf-intake-confirmation p:not(.uf-eyebrow){font-size:16px;line-height:1.8;color:#514d47;margin-bottom:24px;}
+@media(max-width:1000px){.uf-intake-layout{grid-template-columns:1fr;}.uf-intake-aside{max-width:680px;}}
+@media(max-width:600px){
+ .uf-intake-steps{margin-bottom:39px;}
+ .uf-intake-steps li{font-size:10px;letter-spacing:.03em;text-align:center;}
+ .uf-intake-steps li span{font-size:16px;}
+ .uf-intake-service-grid,.uf-intake-fields{grid-template-columns:1fr;}
+ .uf-intake-option{min-height:125px;}
+ .uf-intake-review>div{grid-template-columns:1fr;gap:7px;}
+ .uf-intake-actions{align-items:stretch;}
+ .uf-intake-actions .uf-button{padding:14px 11px;gap:9px;letter-spacing:.05em;}
+ .uf-intake-action-note{max-width:135px;}
+}
