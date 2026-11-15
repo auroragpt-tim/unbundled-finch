@@ -5,8 +5,8 @@ A public website and **non-confidential** technical production inquiry experienc
 ## Active public routes
 
 - `/`, `/services`, `/process`, `/about`, `/technologies`, `/projects`: Public company information
-- `/contact`: Guided non-confidential technical inquiry (existing contact Formspree destination)
-- `/portal`: Guided non-confidential project inquiry (existing registration Formspree destination)
+- `/contact`: Guided non-confidential technical inquiry (shared Formspree form)
+- `/portal`: Guided non-confidential project inquiry (shared Formspree form)
 - `/portal/*` legacy routes: Redirect to `/portal` (no user account, secure document portal or billing dashboard is enabled)
 
 ## Inquiry design
@@ -22,12 +22,14 @@ The catalog of services and internal technical QC prompts is in `src/lib/product
 
 ### Third-party form destination
 
-These are the repository's **pre-existing** Formspree endpoints:
+Both contact and project inquiries use **one user-provided Formspree form**:
 
-- Contact inquiries → `https://formspree.io/f/meeeqkyp`
-- Project inquiries → `https://formspree.io/f/moejzwne`
+- Contact inquiries → `https://formspree.io/f/mkjrodld`
+- Project inquiries → `https://formspree.io/f/mkjrodld`
 
-Before using live production inquiries, verify ownership, inbox routing, processor terms, privacy notice, data retention and access permissions for both endpoints. A successful HTTP response is **not** a signed service agreement, deliverable commitment or a secure client-file handoff. The external Formspree account has not been inspected here.
+A `form_source` field distinguishes `Contact page` from `Project intake`. The previous form IDs (`meeeqkyp` and `moejzwne`) are no longer active website destinations. This switch only changes routing for **new** submissions, not previously collected submissions.
+
+Before using live production inquiries, verify ownership, inbox routing, processor terms, privacy notice, data retention and access permissions for the new endpoint. A successful HTTP response is **not** a signed service agreement, deliverable commitment or a secure client-file handoff. The external Formspree account has not been inspected here.
 
 The former /portal/new-request template had an attachment upload input and a different form endpoint. Its TSX and JS components have been retired; old portal paths redirect to the public form.
 
