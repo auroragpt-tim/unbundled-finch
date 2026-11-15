@@ -1,78 +1,73 @@
 /**
- * Finch Technologies / Production Studio: proposed technical intake metadata.
+ * Finch Technologies — technical production workflow catalog.
  *
- * INACTIVE: This module does not collect data, submit forms, store files,
- * contact clients, evaluate legal questions, or connect to the live portal.
- * Technical checks must never be used to make legal or case-acceptance decisions.
- *
- * Source concepts: Inquire2Esquire's Legal Intake Playbook and Criminal Defense
- * Intake Scripts (Nov 2026 review), adapted to the Unbundled Finch
- * Client Integrity & Non-Intervention Policy v1.0.
+ * The public inquiry form uses service labels and technical scope hints only.
+ * The internal workflow/QC helpers do not infer legal deadlines, determine
+ * conflicts, evaluate a case, or authorize confidential document collection.
  */
-
 export const PRODUCTION_STAGES = [
-  "received",
-  "needs_clarification",
-  "ready_for_production",
-  "in_production",
-  "technical_qc",
-  "delivered",
-  "closed",
+  "received", "needs_clarification", "ready_for_production",
+  "in_production", "technical_qc", "delivered", "closed",
 ] as const;
-
 export type ProductionStage = (typeof PRODUCTION_STAGES)[number];
 
 export const PRODUCTION_SERVICES = {
-  table_of_authorities: {
-    label: "Table of Authorities",
-    requestedInputs: ["Final client-approved brief", "Citation/style specification"],
-    technicalChecks: ["Source-to-output citation mapping", "Pagination and alignment", "Client-specified format"],
+  pdf_assembly: {
+    label: "PDF Assembly & Sequencing",
+    summary: "Combine files into a client-directed order.",
+    requestedInputs: ["Source-file list", "Client-specified sequence"],
+    technicalChecks: ["File count and order", "Page continuity", "Output integrity"],
   },
-  ebinder_assembly: {
-    label: "eBinder Assembly",
-    requestedInputs: ["Document manifest", "Client-specified sequence"],
-    technicalChecks: ["File completeness and order", "Bookmarks and internal links", "Page label consistency"],
+  ebinder: {
+    label: "eBinder Architecture",
+    summary: "Build bookmarks, sections and navigation.",
+    requestedInputs: ["Document manifest", "Requested tab and section hierarchy"],
+    technicalChecks: ["Bookmark destinations", "Section order", "Navigation usability"],
   },
-  exhibit_hyperlinking: {
-    label: "Exhibit Hyperlinking",
-    requestedInputs: ["Exhibit files", "Client-provided cross-reference instructions"],
-    technicalChecks: ["Link targets", "Exhibit labels", "Broken-link scan"],
+  hyperlinking: {
+    label: "Exhibit & Internal Hyperlinking",
+    summary: "Connect exhibits and references to intended pages.",
+    requestedInputs: ["Source files", "Client-provided cross-reference instructions"],
+    technicalChecks: ["Link destinations", "Reference labels", "Broken links"],
   },
-  pleading_formatting: {
-    label: "Pleading Formatting",
-    requestedInputs: ["Client-approved pleading", "Court/jurisdiction formatting instructions"],
-    technicalChecks: ["Client-specified margins and spacing", "Pagination and numbering", "Document integrity"],
+  ocr: {
+    label: "OCR & Searchable Text",
+    summary: "Make suitable scanned files searchable.",
+    requestedInputs: ["Scanned source files", "Requested searchability outcome"],
+    technicalChecks: ["Searchable text layer", "Page count", "Original visual fidelity"],
   },
-  document_processing: {
-    label: "Document Processing",
-    requestedInputs: ["Source documents", "Requested output format"],
-    technicalChecks: ["File integrity", "Readable output", "Format match"],
+  numbering: {
+    label: "Pagination, Bates & Indexing",
+    summary: "Apply numbering, page labels and document indexes.",
+    requestedInputs: ["Client-specified numbering scheme", "Source file order"],
+    technicalChecks: ["Numbering sequence", "Index targets", "Page labels"],
   },
-  record_extraction: {
-    label: "Record Extraction",
-    requestedInputs: ["Authorized source record set", "Client-directed extraction scope"],
-    technicalChecks: ["Provenance and coverage log", "Record labels", "Preservation of source content"],
+  authorities: {
+    label: "Table of Authorities Production",
+    summary: "Format and verify a table from client-provided citations.",
+    requestedInputs: ["Final client-approved brief", "Client-provided citation/style specifications"],
+    technicalChecks: ["Reference mapping", "Table pagination", "Technical formatting"],
   },
-  pdf_remediation: {
-    label: "PDF Remediation",
-    requestedInputs: ["Source PDF", "Requested remediation specification"],
-    technicalChecks: ["OCR/searchability when requested", "Legibility", "Page order and labels"],
+  formatting: {
+    label: "Technical Formatting",
+    summary: "Apply client-specified document formatting.",
+    requestedInputs: ["Approved source text", "Client-provided formatting instructions"],
+    technicalChecks: ["Specified layout", "Pagination", "Source-content preservation"],
   },
-  technical_quality_control: {
-    label: "Technical Quality Control",
-    requestedInputs: ["Deliverable files", "Client specification/checklist"],
-    technicalChecks: ["File manifest match", "Navigation and labels", "Technical output specification"],
+  optimization_qc: {
+    label: "Optimization & Production QC",
+    summary: "Check and optimize technical file quality.",
+    requestedInputs: ["Completed draft files", "Technical acceptance criteria"],
+    technicalChecks: ["File integrity", "Navigation", "Client-specified output requirements"],
   },
 } as const;
 
 export type ProductionService = keyof typeof PRODUCTION_SERVICES;
 
-export type TechnicalIntakeFlag =
-  | "missing_authorization"
-  | "missing_source_files"
-  | "missing_deliverable"
-  | "missing_technical_instructions"
-  | "missing_client_provided_jurisdiction";
+/** Human-oriented prompts; never a determination of legal sufficiency. */
+export function technicalChecksFor(service: ProductionService): readonly string[] {
+  return PRODUCTION_SERVICES[service].technicalChecks;
+}
 
 export interface TechnicalIntakeSummary {
   service: ProductionService;
@@ -80,33 +75,20 @@ export interface TechnicalIntakeSummary {
   requestedDeliverable?: string;
   technicalInstructions?: string;
   clientAuthorizedScope: boolean;
-  /** Required only for pleading-formatting workflows; never inferred by Finch. */
-  clientProvidedJurisdiction?: string;
 }
 
-/** Human-readable technical QC prompts, not legal advice or substantive review. */
-export function technicalChecksFor(service: ProductionService): readonly string[] {
-  return PRODUCTION_SERVICES[service].technicalChecks;
-}
+export type TechnicalIntakeFlag =
+  | "missing_authorization"
+  | "missing_source_files"
+  | "missing_deliverable"
+  | "missing_technical_instructions";
 
-/**
- * Pure local validation of high-level production metadata.
- * Callers must NOT treat an empty flag list as permission to collect confidential
- * material or as a legal qualification, conflict check, or service commitment.
- */
+/** Local-only metadata validation for a future authenticated production workspace. */
 export function inspectTechnicalIntake(summary: TechnicalIntakeSummary): TechnicalIntakeFlag[] {
   const flags: TechnicalIntakeFlag[] = [];
   if (!summary.clientAuthorizedScope) flags.push("missing_authorization");
-  if (!Number.isInteger(summary.sourceFileCount) || summary.sourceFileCount <= 0) {
-    flags.push("missing_source_files");
-  }
+  if (!Number.isInteger(summary.sourceFileCount) || summary.sourceFileCount <= 0) flags.push("missing_source_files");
   if (!summary.requestedDeliverable?.trim()) flags.push("missing_deliverable");
   if (!summary.technicalInstructions?.trim()) flags.push("missing_technical_instructions");
-  if (
-    summary.service === "pleading_formatting" &&
-    !summary.clientProvidedJurisdiction?.trim()
-  ) {
-    flags.push("missing_client_provided_jurisdiction");
-  }
   return flags;
 }
