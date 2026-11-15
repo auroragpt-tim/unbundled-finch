@@ -1,6 +1,6 @@
 # Finch Technologies — Technical Intake Foundation
 
-**Status:** Public inquiry experience implemented on the research branch; secure document-intake workspace **not** implemented.
+**Status:** Public inquiry experience implemented on the website; secure document-intake workspace **not** implemented.
 **Scope:** Legal-document production, structured *technical* questions, client-directed production QC and safe handoffs.
 **Reference principle:** Unbundled Finch Client Integrity & Non-Intervention Policy v1.0 — *You write it. We preserve it. If something is unclear, we ask rather than guess.*
 
@@ -22,7 +22,7 @@ No original scripts were reproduced. This document and the new web form use inde
 - Captured data: contact name/email, optional firm/phone, primary requested service, estimated file volume, requested output, desired timing and optional **non-confidential** technical overview.
 - Informed acknowledgment required: no confidential case details, source materials, client identities or privileged information through the public form.
 - No file input, account creation, browser persistence, automated acceptance, legal deadline calculation, or representation about privileged status.
-- Existing contact and registration Formspree destinations are preserved. Processor/account ownership and actual inbox routing are **not independently verified**.
+- Both public inquiry pages now submit to the user-provided shared Formspree endpoint `https://formspree.io/f/mkjrodld`, with `form_source` identifying the originating page. Processor/account ownership and actual inbox routing are **not independently verified**.
 
 ### Retired prototype
 
@@ -72,7 +72,7 @@ Before merging this public-inquiry change:
 - A successful submission resets the form and shows a confirmation without implying an accepted work order
 - Confirm no upload element, backend storage or active legacy portal route is exposed
 - Check keyboard navigation, focus, mobile layout and screen-reader labels
-- Confirm both Formspree account owners, routing, privacy, permission and retention settings with the site operator **before soliciting real confidential material**
+- Confirm the new Formspree account owner, routing, privacy, permission and retention settings with the site operator **before soliciting real confidential material**
 - Verify Netlify deploy preview and production monitoring
 
 Source PDFs are product-design reference material only; they are not legal/compliance authorities or endorsements of Unbundled Finch.
